@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define MAX_NAME 50
 #define MAX_SSN 12      // 10 digits + newline + '\0'
 #define MAX_ADDRESS 100
 #define MAX_PHONE 20
 #define MAX_EMAIL 50
+#define ACCOUNT_NUMBER_LENGTH 8
 
 typedef struct {
     char first_name[MAX_NAME];
@@ -76,6 +79,27 @@ void read_valid_ssn(char *ssn, int max_length) {
     } while (!is_numeric(ssn) || strlen(ssn) != 10);
 }
 
+char* generateAccountNumber() {
+    static char number[ACCOUNT_NUMBER_LENGTH + 1];
+
+    // Initialisiert den Zufallszahlengenerator mit der aktuellen Zeit als Seed.
+    // um bei jedem Programmlauf unterschiedliche Zufallszahlen zu erzeugen.
+    srand((unsigned int) time(NULL));
+
+    while (1) {
+        for (int i = 0; i < ACCOUNT_NUMBER_LENGTH; i++) {
+            number[i] = '0' + (rand() % 10);
+        }
+        number[ACCOUNT_NUMBER_LENGTH] = '\0';
+
+        if (strcmp(number, "00000000") != 0) {
+            break;
+        }
+    }
+
+    return number;
+}
+
 int main() {
     Customer new_customer;
 
@@ -87,6 +111,7 @@ int main() {
     read_required_input("Address: ", new_customer.address, MAX_ADDRESS);
     read_valid_phone(new_customer.phone, MAX_PHONE);
     read_valid_email(new_customer.email, MAX_EMAIL);
+    char* newAccountNumber = generateAccountNumber();
 
     printf("\n--- Account Created Successfully ---\n");
     printf("Name: %s\n", new_customer.first_name);
@@ -95,6 +120,7 @@ int main() {
     printf("Address: %s\n", new_customer.address);
     printf("Phone: %s\n", new_customer.phone);
     printf("Email: %s\n", new_customer.email);
+    printf("Account number: %s\n", newAccountNumber);
 
     return 0;
 }
