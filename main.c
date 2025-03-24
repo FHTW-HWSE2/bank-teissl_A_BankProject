@@ -10,7 +10,7 @@
 #define MAX_PHONE 20
 #define MAX_EMAIL 50
 #define ACCOUNT_NUMBER_LENGTH 9
-
+//ghgjhff
 enum AccountType
 {
     STANDARD_ACCOUNT = 1,
