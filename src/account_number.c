@@ -5,7 +5,7 @@
 #include <time.h>
 #include <stdbool.h>
 
-#define CSV_FILE "assets/accounts.csv"
+#define CSV_FILE "../assets/accounts.csv"
 
 // Checks if an account number exists in the CSV file by scanning the last field of each row.
 static bool account_exists(const char *account_number) {

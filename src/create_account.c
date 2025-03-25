@@ -7,7 +7,7 @@
 #include <stdbool.h>
 
 #define MAX_STRING_LENGTH 100
-#define CSV_FILE "assets/accounts.csv"
+#define CSV_FILE "../assets/accounts.csv"
 
 // --- Helper Functions ---
 
