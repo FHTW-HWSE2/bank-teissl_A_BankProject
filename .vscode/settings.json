@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "time.h": "c",
+        "bank_account.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c",
+        "create_account.h": "c",
+        "account_number.h": "c"
+    }
+}
