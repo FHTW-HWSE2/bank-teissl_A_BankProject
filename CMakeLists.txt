@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
-project(BANK-TEISSL_A_BANKPROJECT C)
+project(BANK-Teissl_A_BANKPROJECT C)
 
-# set(CMAKE_C_COMPILER "cl" CACHE STRING "C compiler" FORCE)  # For VS
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED True)
-add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
-# Add the main executable
-add_executable(BANK-TEISSL_A_BANKPROJECT main.c)
+# Include header directory
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+# Build the executable with all source files
+add_executable(BankApp src/main.c src/create_account.c src/account_number.c)
