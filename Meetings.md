@@ -1,4 +1,4 @@
-Week 13 (24.3. - 30.3.)
+## Week 13 (24.3. - 30.3.)
 
 - Test file created with 2 test functions
 
@@ -10,13 +10,12 @@ Week 13 (24.3. - 30.3.)
 
 - CMake: linking, software download, and build with CMake implemented
 
-To-Do:
+To-Do's:
 - Warning in cmake build
 
 - refine Doxygen comments
 
-- Add tests to available functions 
+- Add tests to implemented functions 
 
 
-
----------------------------------------------------------------------------------
+------------------------
