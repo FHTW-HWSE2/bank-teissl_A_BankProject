@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(BANK-Teissl_A_BANKPROJECT C)
-#project(BANK-Teissl_A_BANKPROJECT VERSION 1.0 DESCRIPTION "Bank system for account management, transactions, reporting, and clerk operations." LANGUAGES C)
+
+#project(BANK-Teissl_A_BANKPROJECT 
+#   VERSION 1.0 
+#   DESCRIPTION "Bank system for account management, transactions, reporting, and clerk operations." 
+#   LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED True)
