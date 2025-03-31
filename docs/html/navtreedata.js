@@ -26,14 +26,19 @@ var NAVTREE =
 [
   [ "My Project", "index.html", [
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"account__number_8h_source.html"
+"account__number_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
