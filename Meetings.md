@@ -1,2 +1,13 @@
-8.3.2025	Bojan, Jangin, Malaz	Created Issues
-22.3.2025	Jangin, Malaz	        2 Issues coded
+Week 13 (24.3. - 30.3.)
+
+- Test file created with 2 test functions
+
+- Project code divided into multiple files
+
+- Validations for branch code and account type implemented
+
+- Fixes: Assets file not found issue resolved, assets file header re-added
+
+- CMake: linking, software download, and build with CMake implemented
+
+---------------------------------------------------------------------------------
