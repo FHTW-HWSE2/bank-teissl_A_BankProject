@@ -9,15 +9,27 @@
 #define MAX_STRING_LENGTH 100
 #define CSV_FILE "../assets/accounts.csv"
 
-// --- Helper Functions ---
-
-// Clears the input buffer.
+/**
+ * @brief Clears the standard input buffer.
+ *
+ * This function discards all characters remaining in the input buffer until a newline or EOF is found.
+ * Useful for avoiding unwanted input when using scanf.
+ */
 void clear_input_buffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-// Prompts the user until a non-empty input is provided.
+/**
+ * @brief Prompts the user until a non-empty input is entered.
+ *
+ * Displays a prompt and waits for the user to enter a string. If the input is empty,
+ * the user will be prompted again.
+ *
+ * @param prompt The message shown to the user.
+ * @param buffer The buffer to store the user's input.
+ * @param size The maximum number of characters to read.
+ */
 void get_valid_input(const char *prompt, char *buffer, int size) {
     while (1) {
         printf("%s", prompt);
@@ -31,7 +43,14 @@ void get_valid_input(const char *prompt, char *buffer, int size) {
     }
 }
 
-// Prompts the user until a valid double value is entered.
+/**
+ * @brief Prompts the user until a valid double value is entered.
+ *
+ * Continues prompting until the user enters a valid numeric (double) value.
+ *
+ * @param prompt The message shown to the user.
+ * @return The valid double entered by the user.
+ */
 double get_valid_double(const char *prompt) {
     double value;
     char dummy;
@@ -48,7 +67,15 @@ double get_valid_double(const char *prompt) {
     }
 }
 
-// Prompts the user until a valid 10-digit SSN is entered.
+/**
+ * @brief Prompts the user until a valid 10-digit SSN is entered.
+ *
+ * Ensures the SSN consists of exactly 10 numeric digits.
+ *
+ * @param prompt The message shown to the user.
+ * @param buffer The buffer to store the SSN.
+ * @param size The size of the buffer.
+ */
 void get_valid_ssn(const char *prompt, char *buffer, int size) {
     while (1) {
         printf("%s", prompt);
@@ -71,7 +98,15 @@ void get_valid_ssn(const char *prompt, char *buffer, int size) {
     }
 }
 
-// Prompts the user until a valid branch code ("B1" or "B2") is entered.
+/**
+ * @brief Prompts the user until a valid branch code is entered.
+ *
+ * Only accepts "B1" or "B2" as valid branch codes.
+ *
+ * @param prompt The message shown to the user.
+ * @param buffer The buffer to store the branch code.
+ * @param size The size of the buffer.
+ */
 void get_valid_branch_code(const char *prompt, char *buffer, int size) {
     while (1) {
         printf("%s", prompt);
@@ -85,8 +120,13 @@ void get_valid_branch_code(const char *prompt, char *buffer, int size) {
     }
 }
 
-// --- Main Function to Create a Bank Account ---
-
+/**
+ * @brief Creates a new bank account and stores the data in a CSV file.
+ *
+ * This function gathers user input with validation for personal details,
+ * account type, and financial information. It generates a unique account number,
+ * writes the data into a CSV file, and displays confirmation messages.
+ */
 void create_bank_account(void) {
     char first_name[MAX_STRING_LENGTH], last_name[MAX_STRING_LENGTH];
     char ssn[11], address[MAX_STRING_LENGTH], phone[MAX_STRING_LENGTH], email[MAX_STRING_LENGTH];

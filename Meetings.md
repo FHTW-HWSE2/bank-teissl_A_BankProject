@@ -10,4 +10,11 @@ Week 13 (24.3. - 30.3.)
 
 - CMake: linking, software download, and build with CMake implemented
 
+To-Do:
+- Warning in cmake build
+
+- refine Doxygen comments
+
+- Add tests to available functions 
+
 ---------------------------------------------------------------------------------
