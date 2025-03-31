@@ -11,11 +11,9 @@
 - CMake: linking, software download, and build with CMake implemented
 
 To-Do's:
-- Warning in cmake build
+- Fix warning in cmake build
 
-- refine Doxygen comments
-
-- Add tests to implemented functions 
+- Fix tests and implement new tests 
 
 
 ------------------------
