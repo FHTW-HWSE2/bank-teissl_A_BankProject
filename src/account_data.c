@@ -40,12 +40,7 @@ char* generate_unique_account_number(void) {
     return account_number;
 }
 
-void save_account_to_csv(
-    const char *first, const char *last, const char *ssn,
-    const char *address, const char *phone, const char *email,
-    const char *type, double balance, double overdraft,
-    const char *branch, const char *account_number
-) {
+void save_account_to_csv(const BankAccount *account) {
     FILE *file = fopen(CSV_FILE, "a+");
     if (!file) {
         printf("Error opening file.\n");
@@ -58,6 +53,16 @@ void save_account_to_csv(
     }
 
     fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%.2f,%.2f,%s,%s\n",
-            first, last, ssn, address, phone, email, type, balance, overdraft, branch, account_number);
+            account->first_name,
+            account->last_name,
+            account->ssn,
+            account->address,
+            account->phone,
+            account->email,
+            account->account_type,
+            account->initial_balance,
+            account->overdraft_limit,
+            account->branch_code,
+            account->account_number);
     fclose(file);
 }
