@@ -32,3 +32,4 @@ To do's:
 - implement new Issues 
 - use Cmock in tests 
 - finish layers fixes (Assets file to data folder)
+- finish project setup (Build with CMake)
