@@ -1,4 +1,4 @@
-#include "include/create_account.h"
+#include "presentation/user_interface.h"
 
 /**
  * @brief Main entry point of the program.
@@ -9,6 +9,6 @@
  * @return int Returns 0 if the program completes successfully.
  */
 int main(void) {
-    create_bank_account();
+    start_account_creation_ui();
     return 0;
 }
