@@ -24,9 +24,10 @@ To-Do's:
 
 - Unity Tests for Create_account.c and Account_number.c implemented 
 - Layers Fixed 
+- Projet setup for rest of the group
 
 
 To do's:
-- Adapt issues
+- Adapt issues based on new requirements
 - implement new Issues 
-- Cmock 
+- use Cmock in tests 
