@@ -1,5 +1,5 @@
-#include "include/create_account.h"
-#include "include/account_data.h"
+#include "create_account.h"
+#include "data/account_data.h"
 #include <string.h>
 
 void create_account_logic(BankAccount *account) {
