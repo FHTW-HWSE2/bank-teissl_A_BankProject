@@ -1,5 +1,6 @@
 #ifndef ACCOUNT_DATA_H
 #define ACCOUNT_DATA_H
+#include <stdbool.h>
 
 #define MAX_STRING_LENGTH 100
 
@@ -17,7 +18,7 @@ typedef struct {
     char account_number[9];
 } BankAccount;
 
-char* generate_unique_account_number(void);
 void save_account_to_csv(const BankAccount *account);
+bool account_exists(const char *account_number);
 
 #endif

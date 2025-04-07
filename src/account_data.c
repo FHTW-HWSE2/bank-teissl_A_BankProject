@@ -7,7 +7,7 @@
 
 #define CSV_FILE "../assets/accounts.csv"
 
-static bool account_exists(const char *account_number) {
+bool account_exists(const char *account_number) {
     FILE *file = fopen(CSV_FILE, "r");
     if (!file) return false;
     char line[256];
@@ -29,15 +29,6 @@ static bool account_exists(const char *account_number) {
     }
     fclose(file);
     return false;
-}
-
-char* generate_unique_account_number(void) {
-    static char account_number[9];
-    srand((unsigned int)time(NULL));
-    do {
-        snprintf(account_number, sizeof(account_number), "%08d", rand() % 100000000);
-    } while (strcmp(account_number, "00000000") == 0 || account_exists(account_number));
-    return account_number;
 }
 
 void save_account_to_csv(const BankAccount *account) {
