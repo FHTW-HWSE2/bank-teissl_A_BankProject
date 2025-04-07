@@ -28,8 +28,9 @@ To-Do's:
 
 
 To do's:
-- Adapt issues based on new requirements
+- adapt issues based on new requirements
 - implement new Issues 
 - use Cmock in tests 
 - finish layers fixes (Assets file to data folder)
 - finish project setup (Build with CMake)
+- adjust input validations (phone number, email, ???)
