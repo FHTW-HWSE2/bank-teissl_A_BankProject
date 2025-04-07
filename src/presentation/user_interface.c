@@ -4,6 +4,18 @@
 
 #define MAX_STRING_LENGTH 100
 
+int display_menu()
+{
+    printf();
+    scanf();
+    bufferhandling...
+    return user_decision;
+}
+
+void get_user_account_data(*account)
+{ 
+    scanf(%d, account->ssn;)
+}
 static void clear_input_buffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);

@@ -18,3 +18,4 @@ char* generate_unique_account_number(void) {
     } while (strcmp(account_number, "00000000") == 0 || account_exists(account_number));
     return account_number;
 }
+ 
