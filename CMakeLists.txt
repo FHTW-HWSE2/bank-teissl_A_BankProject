@@ -17,4 +17,4 @@ include_directories(${PROJECT_SOURCE_DIR})
 add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
 # Build the executable with all source files
-add_executable(BankApp src/main.c src/account_data.c src/presentation.c src/create_account_logic.c)
+add_executable(BankApp src/main.c src/data/account_data.c src/presentation/user_interface.c src/logic/create_account.c)

@@ -1,6 +1,9 @@
 #include "create_account.h"
-#include "data/account_data.h"
+#include "src/data/account_data.h"
 #include <string.h>
+#include <stdlib.h> // für srand
+#include <time.h>   // für time
+#include <stdio.h> // für snprintf
 
 void create_account_logic(BankAccount *account) {
     strcpy(account->account_number, generate_unique_account_number());
