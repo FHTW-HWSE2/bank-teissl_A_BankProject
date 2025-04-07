@@ -16,4 +16,17 @@ To-Do's:
 - Fix tests and implement new tests 
 
 
+
+
+
 ------------------------
+## 31.03.2025
+
+- Unity Tests for Create_account.c and Account_number.c implemented 
+- Layers Fixed 
+
+
+To do's:
+- Adapt issues
+- implement new Issues 
+- Cmock 
