@@ -31,3 +31,4 @@ To do's:
 - Adapt issues based on new requirements
 - implement new Issues 
 - use Cmock in tests 
+- finish layers fixes (Assets file to data folder)
