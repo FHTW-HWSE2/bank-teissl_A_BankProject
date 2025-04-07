@@ -6,10 +6,12 @@
 #include <time.h>
 #include <stdbool.h>
 
+
+
 #define MAX_STRING_LENGTH 100
 #define CSV_FILE "../assets/accounts.csv"
 
-// --- Helper Functions ---
+
 
 // Clears the input buffer.
 void clear_input_buffer(void) {
@@ -169,4 +171,33 @@ void create_bank_account(void) {
     printf("SSN: %s\n", ssn);
     printf("Account number: %s\n", account_number);
     printf("Branch code: %s\n", branch_code);
+}
+int save_account_to_csv(const Account *acc, const char *file_path) {
+    bool writeHeader = false;
+    FILE *file = fopen(file_path, "r");
+    if (file == NULL) {
+        writeHeader = true;
+    } else {
+        fseek(file, 0, SEEK_END);
+        if (ftell(file) == 0) {
+            writeHeader = true;
+        }
+        fclose(file);
+    }
+
+    file = fopen(file_path, "a+");
+    if (file == NULL) {
+        return -1;
+    }
+
+    if (writeHeader) {
+        fprintf(file, "FirstName,LastName,SSN,Address,phone,email,accountType,initialBalance,OverdraftLimit,BranchCode,AccountNumber\n");
+    }
+
+    fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%.2f,%.2f,%s,%s\n",
+        acc->first_name, acc->last_name, acc->ssn, acc->address, acc->phone, acc->email,
+        acc->account_type, acc->initial_balance, acc->overdraft_limit, acc->branch_code, acc->account_number);
+
+    fclose(file);
+    return 0;
 }

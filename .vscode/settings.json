@@ -6,6 +6,7 @@
         "stdlib.h": "c",
         "stdio.h": "c",
         "create_account.h": "c",
-        "account_number.h": "c"
+        "account_number.h": "c",
+        "stdbool.h": "c"
     }
 }

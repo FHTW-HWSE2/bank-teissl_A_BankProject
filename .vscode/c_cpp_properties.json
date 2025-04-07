@@ -2,11 +2,11 @@
     "configurations": [
         {
             "name": "Win32",
-            "includePath": [
-                "  \"${workspaceFolder}/include\",",
-                "  \"${workspaceFolder}/src\",",
-                "  \"${workspaceFolder}/Tests/unity\""
-            ],
+           "includePath": [
+    "${workspaceFolder}/src/include",
+    "${workspaceFolder}/Tests/unity"
+],
+
             "defines": [
                 "_DEBUG",
                 "UNICODE",
