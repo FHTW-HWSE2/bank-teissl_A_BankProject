@@ -1,5 +1,6 @@
 #include "account_data.h"
 #include "src/logic/create_account.h"
+#include "src/presentation/user_interface.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -41,18 +42,16 @@ void save_account_to_csv(const BankAccount *account) {
 
     fseek(file, 0, SEEK_END);
     if (ftell(file) == 0) {
-        fprintf(file, "FirstName,LastName,SSN,Address,phone,email,accountType,initialBalance,OverdraftLimit,BranchCode,AccountNumber\n");
+        fprintf(file, "FirstName,LastName,SSN,Address,phone,email,BranchCode,AccountNumber\n");
     }
 
-    fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%.2f,%.2f,%s,%s\n",
+    fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%s\n",
             account->first_name,
             account->last_name,
             account->ssn,
             account->address,
             account->phone,
             account->email,
-            account->initial_balance,
-            account->overdraft_limit,
             account->branch_code,
             account->account_number);
     fclose(file);

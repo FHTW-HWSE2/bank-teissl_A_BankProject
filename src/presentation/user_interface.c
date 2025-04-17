@@ -1,5 +1,5 @@
 #include "user_interface.h"
-#include "create_account.h"  // for validation & logic
+#include "src/logic/create_account.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -12,7 +12,7 @@ static void clear_input_buffer() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-static void get_nonempty_input(const char *prompt, char *buffer) {
+void get_nonempty_input(const char *prompt, char *buffer) {
     while (1) {
         printf("%s", prompt);
         if (fgets(buffer, 100, stdin) != NULL) {
@@ -23,7 +23,7 @@ static void get_nonempty_input(const char *prompt, char *buffer) {
     }
 }
 
-static void get_validated_input(const char *prompt, char *buffer, int size, int (*validate)(const char *), const char *error_msg) {
+void get_validated_input(const char *prompt, char *buffer, int size, int (*validate)(const char *), const char *error_msg) {
     while (1) {
         printf("%s", prompt);
         if (scanf("%s", buffer) == 1) {

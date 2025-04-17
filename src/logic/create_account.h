@@ -10,14 +10,12 @@ typedef struct {
     char address[MAX_STRING_LENGTH];
     char phone[MAX_STRING_LENGTH];
     char email[MAX_STRING_LENGTH];
-    double initial_balance;
-    double overdraft_limit;
     char branch_code[3];
     char account_number[9];
 } BankAccount;
 
 // Core logic function to create and save an account
-void create_account_logic(void);
+void create_account_logic();
 
 // Allows UI input to fill in account fields
 void start_account_creation_ui(BankAccount *account);
