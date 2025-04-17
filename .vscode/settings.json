@@ -7,6 +7,9 @@
         "stdio.h": "c",
         "create_account.h": "c",
         "account_number.h": "c",
-        "stdbool.h": "c"
+        "account_data.h": "c",
+        "ctype.h": "c",
+        "stdbool.h": "c",
+        "user_interface.h": "c"
     }
 }

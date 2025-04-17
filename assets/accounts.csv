@@ -1,7 +1,2 @@
-FirstName,LastName,SSN,Address,phone,email,accountType,initialBalance,OverdraftLimit,BranchCode,AccountNumber
-Jangin,Rasheed,5702300895,Berzeliusgasse 14,06781245555,jangin@rasheed.com,Standard,0.00,0.00,B1,00019912
-Mohammad,Malaz,0000010196,No idea,00000,malaz@fh.com,Initial balance,50.00,0.00,B2,00020131
-Bojan,Veljkovic,0000010185,Belgrad,123456,bojan@fh.com,Overdraft limit,0.00,987.00,B1,00020242
-Niko,Fh,0000010196,Wien,00001,niko@fh.com,Standard,0.00,0.00,B2,00020346
-Test,test,1231231231,test,test,test,Standard,0.00,0.00,B1,00007730
-Test3,Test3,9879879879,Test3,Test3,Test3,Standard,0.00,0.00,B1,00003128
+FirstName,LastName,SSN,Address,phone,email,BranchCode,AccountNumber
+Jangin,Rasheed,1234567899,Berzeliusgasse,06781247777,jangin@rasheed.com,B2,00013151
