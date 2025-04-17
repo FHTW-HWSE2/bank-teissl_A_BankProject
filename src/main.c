@@ -1,4 +1,4 @@
-#include "presentation/user_interface.h"
+#include "logic/create_account.h"
 
 /**
  * @brief Main entry point of the program.
@@ -9,6 +9,7 @@
  * @return int Returns 0 if the program completes successfully.
  */
 int main(void) {
-    start_account_creation_ui();
+   
+    create_account_logic();
     return 0;
 }
