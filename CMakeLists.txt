@@ -26,8 +26,7 @@ add_executable(BankApp
                 src/logic/create_account.c
                 )
 
-
-add_executable(Test
+add_executable(AccountNumberTest
                 Tests/unity/unity.c            # <-- if you use Unity for unit tests
                 Tests/test_account_number.c 
                 src/data/account_data.c 
@@ -36,3 +35,13 @@ add_executable(Test
                 )
 
 add_test(NAME AccountNumberTest COMMAND test_account_number)
+
+add_executable(CreateAccountTest
+                Tests/unity/unity.c            # <-- if you use Unity for unit tests
+                Tests/test_create_account.c 
+                src/data/account_data.c 
+                src/presentation/user_interface.c 
+                src/logic/create_account.c
+                )
+
+add_test(NAME CreateAccountTest COMMAND test_create_account)
