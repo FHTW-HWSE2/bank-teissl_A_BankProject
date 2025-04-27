@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 // Check if an account number already exists in the CSV file
-bool account_exists(const char *account_number);
+bool account_exists(const char *filename, const char *account_number);
 
 // Save account info to the CSV file
 void save_account_to_csv(const BankAccount *account);

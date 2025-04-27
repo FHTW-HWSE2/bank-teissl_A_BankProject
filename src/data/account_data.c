@@ -7,8 +7,8 @@
 
 #define CSV_FILE "../assets/accounts.csv"
 
-bool account_exists(const char *account_number) {
-    FILE *file = fopen(CSV_FILE, "r");
+bool account_exists(const char *filename, const char *account_number) {
+    FILE *file = fopen(filename, "r");
     if (!file) return false;
 
     char line[256];

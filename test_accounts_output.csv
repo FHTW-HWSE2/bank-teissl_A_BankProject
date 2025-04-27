@@ -1,2 +1,0 @@
-FirstName,LastName,SSN,Address,phone,email,accountType,initialBalance,OverdraftLimit,BranchCode,AccountNumber
-Alice,Smith,1234567890,123 Lane,555-1234,alice@test.com,Standard,0.00,0.00,B1,12345678
