@@ -33,8 +33,8 @@ bool account_exists(const char *filename, const char *account_number) {
     return false;
 }
 
-void save_account_to_csv(const BankAccount *account) {
-    FILE *file = fopen(CSV_FILE, "a+");
+void save_account_to_csv(const char *filename, const BankAccount *account) {
+    FILE *file = fopen(filename, "a+");
     if (!file) {
         open_file_error();
         return;

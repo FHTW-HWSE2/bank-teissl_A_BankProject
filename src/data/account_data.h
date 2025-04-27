@@ -8,6 +8,6 @@
 bool account_exists(const char *filename, const char *account_number);
 
 // Save account info to the CSV file
-void save_account_to_csv(const BankAccount *account);
+void save_account_to_csv(const char *filename, const BankAccount *account);
 
 #endif // ACCOUNT_DATA_H
