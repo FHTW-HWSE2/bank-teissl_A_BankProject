@@ -1,0 +1,12 @@
+:mock_path: "Tests/mocks"
+:includes:
+  - "src"
+:plugins:
+  - expect
+  - expect_any_args
+  - ignore
+:framework: unity
+:unity_helper_path: "Tests/unity"
+:verbosity: 2
+:mock_prefix: "Mock"
+:enforce_strict_ordering: false

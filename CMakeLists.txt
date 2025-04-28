@@ -11,7 +11,12 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 
 
 # Include header directory
-include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${PROJECT_SOURCE_DIR}
+    Tests/CMock/src
+    src/data
+)
+#include_directories(Tests/mocks)
+#include_directories(Tests/CMock)
 
 # Add custom compiler flags
 add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
@@ -27,7 +32,7 @@ add_executable(BankApp
                 )
 
 add_executable(AccountNumberTest
-                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
+                Tests/unity/src/unity.c           
                 Tests/test_account_number.c 
                 Tests/CMock/src/cmock.c
                 src/data/account_data.c 
@@ -37,8 +42,19 @@ add_executable(AccountNumberTest
 
 add_test(NAME AccountNumberTest COMMAND test_account_number)
 
+add_executable(AccountNumberTestCmock
+                Tests/unity/src/unity.c         
+                Tests/test_account_number.c 
+                Tests/CMock/src/cmock.c
+                mocks/Mockaccount_data.c 
+                mocks/Mockuser_interface.c
+                mocks/Mockcreate_account.c
+                )
+
+add_test(NAME AccountNumberTestCmock COMMAND test_account_number_cmock)
+
 add_executable(CreateAccountTest
-                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
+                Tests/unity/src/unity.c         
                 Tests/test_create_account.c 
                 Tests/CMock/src/cmock.c
                 src/data/account_data.c 
