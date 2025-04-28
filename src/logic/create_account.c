@@ -7,12 +7,14 @@
 #include <stdio.h>
 #include <ctype.h>
 
+const char *filename = "../assets/accounts.csv";
+
 void create_account_logic() {
     BankAccount account = {0};
 
     strcpy(account.account_number, generate_unique_account_number());
     start_account_creation_ui(&account);
-    save_account_to_csv(&account);
+    save_account_to_csv(filename, &account);
 }
 
 void start_account_creation_ui(BankAccount *account) {
@@ -31,10 +33,11 @@ void start_account_creation_ui(BankAccount *account) {
 
 char* generate_unique_account_number() {
     static char account_number[9];
+
     srand((unsigned int)time(NULL));
     do {
         snprintf(account_number, sizeof(account_number), "%08d", rand() % 100000000);
-    } while (strcmp(account_number, "00000000") == 0 || account_exists(account_number));
+    } while (strcmp(account_number, "00000000") == 0 || account_exists(filename, account_number));
     return account_number;
 }
 

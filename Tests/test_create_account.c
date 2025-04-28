@@ -1,5 +1,5 @@
-#include "unity/unity.h"
-#include "create_account.h"
+#include "unity/src/unity.h"
+#include "src/data/account_data.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -11,16 +11,23 @@ void setUp(void) {
     if (file) fclose(file);
 }
 
-void tearDown(void) {}
+void tearDown(void) {
+    remove(TEST_CSV); // Optional: Delete after test if you want
+}
 
 void test_save_account_to_csv_creates_file_and_writes_data(void) {
-    Account acc = {
-        "Alice", "Smith", "1234567890", "123 Lane", "555-1234", "alice@test.com",
-        "Standard", 0.0, 0.0, "B1", "12345678"
+    BankAccount account = {
+        .first_name = "John",
+        .last_name = "Doe",
+        .ssn = "123456789",
+        .address = "123 Main St",
+        .phone = "555-1234",
+        .email = "john@example.com",
+        .branch_code = "001",
+        .account_number = "98765432"
     };
 
-    int result = save_account_to_csv(&acc, TEST_CSV);
-    TEST_ASSERT_EQUAL_INT(0, result);
+    save_account_to_csv(TEST_CSV, &account);
 
     FILE *file = fopen(TEST_CSV, "r");
     TEST_ASSERT_NOT_NULL(file);
@@ -28,7 +35,7 @@ void test_save_account_to_csv_creates_file_and_writes_data(void) {
     char line[512];
     int found_data = 0;
     while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "Alice") && strstr(line, "Smith") && strstr(line, "12345678")) {
+        if (strstr(line, "John") && strstr(line, "Doe") && strstr(line, "98765432")) {
             found_data = 1;
             break;
         }

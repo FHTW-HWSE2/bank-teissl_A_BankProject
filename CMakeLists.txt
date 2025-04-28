@@ -16,5 +16,34 @@ include_directories(${PROJECT_SOURCE_DIR})
 # Add custom compiler flags
 add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
+enable_testing()
+
 # Build the executable with all source files
-add_executable(BankApp src/main.c src/data/account_data.c src/presentation/user_interface.c src/logic/create_account.c)
+add_executable(BankApp     
+                src/main.c 
+                src/data/account_data.c 
+                src/presentation/user_interface.c 
+                src/logic/create_account.c
+                )
+
+add_executable(AccountNumberTest
+                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
+                Tests/test_account_number.c 
+                Tests/CMock/src/cmock.c
+                src/data/account_data.c 
+                src/presentation/user_interface.c 
+                src/logic/create_account.c
+                )
+
+add_test(NAME AccountNumberTest COMMAND test_account_number)
+
+add_executable(CreateAccountTest
+                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
+                Tests/test_create_account.c 
+                Tests/CMock/src/cmock.c
+                src/data/account_data.c 
+                src/presentation/user_interface.c 
+                src/logic/create_account.c
+                )
+
+add_test(NAME CreateAccountTest COMMAND test_create_account)

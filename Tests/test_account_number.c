@@ -1,12 +1,10 @@
-#include "unity/unity.h"
-#include "account_number.h"
+#include "unity/src/unity.h"
+#include "src/data/account_data.h"
+#include "src/logic/create_account.h"
 #include <stdio.h>
 #include <string.h>
 
 #define TEST_CSV "test_accounts.csv"
-
-#undef CSV_FILE
-#define CSV_FILE TEST_CSV
 
 void setUp(void) {
     FILE *file = fopen(TEST_CSV, "w");
@@ -17,13 +15,13 @@ void setUp(void) {
 void tearDown(void) {}
 
 void test_account_exists_finds_existing_accounts(void) {
-    TEST_ASSERT_TRUE(account_exists("12345678"));
-    TEST_ASSERT_TRUE(account_exists("87654321"));
+    TEST_ASSERT_TRUE(account_exists(TEST_CSV, "12345678"));
+    TEST_ASSERT_TRUE(account_exists(TEST_CSV, "87654321"));
 }
 
 void test_account_exists_rejects_nonexisting_accounts(void) {
-    TEST_ASSERT_FALSE(account_exists("00000000"));
-    TEST_ASSERT_FALSE(account_exists("99999999"));
+    TEST_ASSERT_FALSE(account_exists(TEST_CSV, "00000000"));
+    TEST_ASSERT_FALSE(account_exists(TEST_CSV, "99999999"));
 }
 
 void test_generate_unique_account_number_returns_valid_number(void) {
