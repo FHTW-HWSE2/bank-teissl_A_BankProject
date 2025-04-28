@@ -13,6 +13,9 @@ cmake ..
 cmake --build .
 ./BankApp
 ```
+ruby Tests/CMock/lib/cmock.rb src/data/account_data.h
+
+```
 ## Compile with GCC
 To manually compile the project using **GCC**, run:
 ```sh

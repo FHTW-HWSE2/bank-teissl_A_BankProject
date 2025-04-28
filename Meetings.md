@@ -34,3 +34,18 @@ To do's:
 - finish layers fixes (Assets file to data folder)
 - finish project setup (Build with CMake)
 - adjust input validations (phone number, email, ???)
+
+------------------------
+## 28.04.2025
+
+- finished layers fixing
+- Unity Tests fixed 
+- Projet setup for Bojan in CLion
+. Cmock implemented
+
+To do's:
+- merge doxygen comments in main function
+- fix Cmock errors 
+- adjust input validations (phone number, email, ???)
+- implement a new Issue 
+- implement new unit tests
