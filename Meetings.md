@@ -44,8 +44,9 @@ To do's:
 . Cmock implemented
 
 To do's:
-- merge doxygen comments in main function
+- merge doxygen comments in main branch
 - fix Cmock errors 
 - adjust input validations (phone number, email, ???)
-- implement a new Issue 
-- implement new unit tests
+- implement a new Issue (maybe deleting a Bank Account)
+- implement new tests
+- Test coverage
