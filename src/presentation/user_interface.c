@@ -1,5 +1,6 @@
 #include "user_interface.h"
 #include "src/logic/create_account.h"
+#include "src/logic/delete_account.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -62,4 +63,35 @@ void print_account_confirmation(const BankAccount *account) {
     printf("SSN: %s\n", account->ssn);
     printf("Account number: %s\n", account->account_number);
     printf("Branch code: %s\n", account->branch_code);
+    printf("Account number: %s\n", account->account_number);
+    printf("Account balance: %lu\n", account->balance);
+}
+
+void delete_account_ui() {
+    char account_id[50];
+
+    printf("Enter the Account number to delete: ");
+    scanf("%49s", account_id);
+
+    int result = delete_account(account_id);
+
+    switch (result) {
+        case 0:
+            printf("Account successfully deleted and archived.\n");
+            break;
+        case -1:
+            printf("Error: Account not found.\n");
+            break;
+        case -2:
+            printf("Error: Could not withdraw balance.\n");
+            break;
+        case -3:
+            printf("Error: Could not delete account from active list.\n");
+            break;
+        case -4:
+            printf("Error: Could not archive deleted account.\n");
+            break;
+        default:
+            printf("Unknown error occurred.\n");
+    }
 }

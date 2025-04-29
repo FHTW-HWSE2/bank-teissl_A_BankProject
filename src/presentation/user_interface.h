@@ -7,4 +7,5 @@ void print_account_confirmation(const BankAccount *account);
 void get_nonempty_input(const char *prompt, char *buffer);
 void get_validated_input(const char *prompt, char *buffer, int size, int (*validate)(const char *), const char *error_msg);
 int show_menu();
+void delete_account_ui();
 #endif // USER_INTERFACE_H
