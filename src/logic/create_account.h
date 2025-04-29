@@ -27,4 +27,4 @@ char* generate_unique_account_number(void);
 int is_valid_ssn(const char *ssn);
 int is_valid_branch_code(const char *branch_code);
 
-#endif // CREATE_ACCOUNT_H
+#endif
