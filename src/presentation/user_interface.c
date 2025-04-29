@@ -12,6 +12,28 @@ static void clear_input_buffer() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+int show_menu() {
+    int choice;
+
+    printf("\n========= Bank Project Menu =========\n");
+    printf("1. Create New Account\n");
+    printf("2. Delete Account\n");
+    printf("9. Exit\n");
+    printf("Choose an option: ");
+
+    if (scanf("%d", &choice) != 1)
+    {
+        printf("Invalid input. Please enter a number.\n");
+        // Clear invalid input
+        while (getchar() != '\n');
+        return -1; // Indicate invalid input
+    }
+
+    clear_input_buffer();
+
+    return choice;
+}
+
 void get_nonempty_input(const char *prompt, char *buffer) {
     while (1) {
         printf("%s", prompt);

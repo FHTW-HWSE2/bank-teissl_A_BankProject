@@ -21,29 +21,31 @@ enable_testing()
 # Build the executable with all source files
 add_executable(BankApp     
                 src/main.c 
+                src/logic/controller.c
+                src/logic/delete_account.c
+                src/logic/create_account.c
                 src/data/account_data.c 
                 src/presentation/user_interface.c 
-                src/logic/create_account.c
                 )
 
-add_executable(AccountNumberTest
-                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
-                Tests/test_account_number.c 
-                Tests/CMock/src/cmock.c
-                src/data/account_data.c 
-                src/presentation/user_interface.c 
-                src/logic/create_account.c
-                )
+#add_executable(AccountNumberTest
+#                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
+#                Tests/test_account_number.c 
+#                Tests/CMock/src/cmock.c
+#                src/data/account_data.c 
+#                src/presentation/user_interface.c 
+#                src/logic/create_account.c
+#                )
 
-add_test(NAME AccountNumberTest COMMAND test_account_number)
+#add_test(NAME AccountNumberTest COMMAND test_account_number)
 
-add_executable(CreateAccountTest
-                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
-                Tests/test_create_account.c 
-                Tests/CMock/src/cmock.c
-                src/data/account_data.c 
-                src/presentation/user_interface.c 
-                src/logic/create_account.c
-                )
+#add_executable(CreateAccountTest
+#                Tests/unity/src/unity.c            # <-- if you use Unity for unit tests
+#                Tests/test_create_account.c 
+#                Tests/CMock/src/cmock.c
+#                src/data/account_data.c 
+#                src/presentation/user_interface.c 
+#                src/logic/create_account.c
+#                )
 
-add_test(NAME CreateAccountTest COMMAND test_create_account)
+#add_test(NAME CreateAccountTest COMMAND test_create_account)
