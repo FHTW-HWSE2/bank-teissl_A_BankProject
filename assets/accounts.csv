@@ -1,3 +1,2 @@
-FirstName,LastName,SSN,Address,phone,email,BranchCode,AccountNumber
-Jangin,Rasheed,1234567899,Berzeliusgasse,06781247777,jangin@rasheed.com,B2,00013151
-Bojan,Verl,1231231239,test,test,test,B1,00017080
+FirstName,LastName,SSN,Address,phone,email,BranchCode,AccountNumber,Balance
+Jangin,Rasheed,1231231231,Berzeliusgasse 14,06784444444,jangin@rasheed,B1,00027885,0
