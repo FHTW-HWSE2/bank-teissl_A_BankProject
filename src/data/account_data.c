@@ -61,45 +61,83 @@ int save_account_to_csv(const char *filename, const BankAccount *account) {
     return 0;
 }
 
-int get_account_by_id(BankAccount *account) {
-    FILE *file = fopen("assets.csv", "r");
+int get_account_by_account_number(const char *account_number, BankAccount *account) {
+    FILE *file = fopen(CSV_FILE, "r");
+
     if (!file) return -1;
 
     BankAccount temp;
 
-    while (fscanf(file, "%[^,],%lf\n", temp.account_number, temp.balance) != EOF) {
-        if (strcmp(temp.account_number, account->account_number) == 0) {
-            account->balance = temp.balance; // Update the passed account with data
+    while (fscanf(file, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu\n",
+                  temp.first_name,
+                  temp.last_name,
+                  temp.ssn,
+                  temp.address,
+                  temp.phone,
+                  temp.email,
+                  temp.branch_code,
+                  temp.account_number,
+                  &temp.balance) != EOF) {
+
+        if (strcmp(temp.account_number, account_number) == 0) {
+            *account = temp;  // copy all fields to caller
             fclose(file);
             return 0; // Found
         }
     }
-    
+
     fclose(file);
     return -1; // Not found
 }
 
-int remove_account(const char *account_number) {
-    FILE *file = fopen("assets.csv", "r");
+int remove_account(const BankAccount *account) {
+    FILE *file = fopen(CSV_FILE, "r");
     FILE *temp = fopen("temp.csv", "w");
     if (!file || !temp) return -1;
 
-    BankAccount account;
+    BankAccount current;
     int found = 0;
 
-    while (fscanf(file, "%[^,],%lf\n", account.account_number, account.balance) != EOF) {
-        if (strcmp(account.account_number, account_number) != 0) {
-            fprintf(temp, "%s,%.2lf\n", account.account_number, account.balance);
+    // ✅ Read the header line from the original file
+    char header[512];
+    if (fgets(header, sizeof(header), file)) {
+        fputs(header, temp);  // ✅ Write the same header to the temp file
+    }
+
+    // Now read and process the remaining data rows
+    while (fscanf(file, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu\n",
+                  current.first_name,
+                  current.last_name,
+                  current.ssn,
+                  current.address,
+                  current.phone,
+                  current.email,
+                  current.branch_code,
+                  current.account_number,
+                  &current.balance) != EOF) {
+
+        if (strcmp(current.account_number, account->account_number) != 0) {
+            // Copy all fields to temp (preserve record)
+            fprintf(temp, "%s,%s,%s,%s,%s,%s,%s,%s,%lu\n",
+                    current.first_name,
+                    current.last_name,
+                    current.ssn,
+                    current.address,
+                    current.phone,
+                    current.email,
+                    current.branch_code,
+                    current.account_number,
+                    current.balance);
         } else {
-            found = 1;
+            found = 1; // This is the account we're deleting
         }
     }
 
     fclose(file);
     fclose(temp);
 
-    remove("assets.csv");
-    rename("temp.csv", "assets.csv");
+    remove(CSV_FILE);
+    rename("temp.csv", CSV_FILE);
 
     return found ? 0 : -1;
 }

@@ -61,19 +61,18 @@ void print_account_confirmation(const BankAccount *account) {
     printf("\nAccount created successfully!\n");
     printf("Account holder: %s %s\n", account->first_name, account->last_name);
     printf("SSN: %s\n", account->ssn);
-    printf("Account number: %s\n", account->account_number);
     printf("Branch code: %s\n", account->branch_code);
     printf("Account number: %s\n", account->account_number);
     printf("Account balance: %lu\n", account->balance);
 }
 
 void delete_account_ui() {
-    char account_id[50];
+    char account_number[9];
 
     printf("Enter the Account number to delete: ");
-    scanf("%49s", account_id);
+    scanf("%8s", account_number);
 
-    int result = delete_account(account_id);
+    int result = delete_account(account_number);
 
     switch (result) {
         case 0:
@@ -83,12 +82,9 @@ void delete_account_ui() {
             printf("Error: Account not found.\n");
             break;
         case -2:
-            printf("Error: Could not withdraw balance.\n");
-            break;
-        case -3:
             printf("Error: Could not delete account from active list.\n");
             break;
-        case -4:
+        case -3:
             printf("Error: Could not archive deleted account.\n");
             break;
         default:
