@@ -19,34 +19,34 @@ void create_account_logic() {
 }
 
 void start_account_creation_ui(BankAccount *account) {
-
     get_nonempty_input("First name: ", account->first_name);
     get_nonempty_input("Last name: ", account->last_name);
     get_nonempty_input("Address: ", account->address);
     get_nonempty_input("Phone: ", account->phone);
     get_nonempty_input("Email: ", account->email);
-
     get_validated_input("SSN (10 digits): ", account->ssn, sizeof(account->ssn), is_valid_ssn, "Invalid SSN. Must be 10 digits.");
     get_validated_input("Branch code (B1/B2): ", account->branch_code, sizeof(account->branch_code), is_valid_branch_code, "Invalid branch code. Use 'B1' or 'B2'.");
-    account->balance = 0; // Initialize balance to 0
-    print_account_confirmation(account);
+
+    account->balance = 0;
+    print_account_confirmation(account); // Confirm account creation with user
 }
 
 char* generate_unique_account_number() {
     static char account_number[9];
 
-    srand((unsigned int)time(NULL));
+    srand((unsigned int)time(NULL)); // Seed RNG with current time
+
     do {
-        snprintf(account_number, sizeof(account_number), "%08d", rand() % 100000000);
+        snprintf(account_number, sizeof(account_number), "%08d", rand() % 100000000); // 8-digit padded number
     } while (strcmp(account_number, "00000000") == 0 || account_exists(filename, account_number));
+
     return account_number;
 }
 
-// Validation logic moved from UI
 int is_valid_ssn(const char *ssn) {
     if (strlen(ssn) != 10) return 0;
     for (int i = 0; i < 10; i++) {
-        if (!isdigit(ssn[i])) return 0;
+        if (!isdigit(ssn[i])) return 0; // Each character must be a digit
     }
     return 1;
 }
@@ -54,4 +54,3 @@ int is_valid_ssn(const char *ssn) {
 int is_valid_branch_code(const char *branch_code) {
     return (strcmp(branch_code, "B1") == 0 || strcmp(branch_code, "B2") == 0);
 }
-

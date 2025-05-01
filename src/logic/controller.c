@@ -13,10 +13,9 @@ void start() {
         switch (choice) {
         case 1:
             create_account_logic();
-            exit(0); // Exit after creating the account
+            //exit(0); // Exit after creating the account
         case 2:
             delete_account_ui();
-            exit(0); // Exit after creating the account
             break;
         case 3:
             break;

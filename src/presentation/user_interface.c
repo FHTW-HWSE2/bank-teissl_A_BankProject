@@ -22,16 +22,13 @@ int show_menu() {
     printf("9. Exit\n");
     printf("Choose an option: ");
 
-    if (scanf("%d", &choice) != 1)
-    {
+    if (scanf("%d", &choice) != 1) {
         printf("Invalid input. Please enter a number.\n");
-        // Clear invalid input
-        while (getchar() != '\n');
-        return -1; // Indicate invalid input
+        while (getchar() != '\n');  // Clear invalid input
+        return -1;
     }
 
     clear_input_buffer();
-
     return choice;
 }
 
@@ -39,7 +36,7 @@ void get_nonempty_input(const char *prompt, char *buffer) {
     while (1) {
         printf("%s", prompt);
         if (fgets(buffer, 100, stdin) != NULL) {
-            buffer[strcspn(buffer, "\n")] = '\0';
+            buffer[strcspn(buffer, "\n")] = '\0';  // Remove newline
             if (strlen(buffer) > 0) break;
         }
         printf("Input must not be empty. Please try again.\n");
@@ -70,7 +67,7 @@ void delete_account_ui() {
     char account_number[9];
 
     printf("Enter the Account number to delete: ");
-    scanf("%8s", account_number);
+    scanf("%8s", account_number);  // Limit input to 8 characters
 
     int result = delete_account(account_number);
 
