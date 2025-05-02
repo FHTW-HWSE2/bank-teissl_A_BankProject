@@ -27,3 +27,9 @@
 35	142	7679315683287497	CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj	16450db009a6ff28
 8	143	7679315683017142	CMakeFiles/BankApp.dir/src/logic/create_account.c.obj	d7b940f86bec675e
 28	145	7679315683227504	CMakeFiles/BankApp.dir/src/data/account_data.c.obj	3079d0626c0923d5
+15	115	7679322442686541	CMakeFiles/BankApp.dir/src/logic/delete_account.c.obj	d13ef20a4976fe7b
+3	117	7679322442559684	CMakeFiles/BankApp.dir/src/logic/controller.c.obj	5921e8b69c46be21
+9	129	7679322442609440	CMakeFiles/BankApp.dir/src/logic/create_account.c.obj	d7b940f86bec675e
+29	144	7679322442809653	CMakeFiles/BankApp.dir/src/data/account_data.c.obj	3079d0626c0923d5
+34	145	7679322442869762	CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj	16450db009a6ff28
+3	95	7679327657713218	CMakeFiles/BankApp.dir/src/logic/update_account.c.obj	70a044945f5bcba9
