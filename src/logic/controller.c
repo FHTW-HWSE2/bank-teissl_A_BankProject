@@ -19,9 +19,14 @@ void start() {
             delete_account_ui();
             exit(0); // Exit after creating the account
             break;
-        case 3:
-            break;
-        case 9:
+        case 3: {
+    char account_number[9];
+    printf("Enter account number to update: ");
+    scanf("%8s", account_number);
+    update_account_details(account_number);
+    break;
+}
+       case 9:
             exit(0);
             break;
         default:
