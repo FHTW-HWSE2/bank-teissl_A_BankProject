@@ -18,6 +18,7 @@ int show_menu() {
     printf("\n========= Bank Project Menu =========\n");
     printf("1. Create New Account\n");
     printf("2. Delete Account\n");
+    printf("3. Update Account Details\n");
     printf("9. Exit\n");
     printf("Choose an option: ");
 
