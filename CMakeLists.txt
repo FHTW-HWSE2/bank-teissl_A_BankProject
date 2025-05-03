@@ -24,6 +24,7 @@ add_executable(BankApp
                 src/logic/controller.c
                 src/logic/delete_account.c
                 src/logic/create_account.c
+                src/logic/update_account.c
                 src/data/account_data.c 
                 src/presentation/user_interface.c 
                 )
