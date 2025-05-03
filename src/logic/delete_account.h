@@ -1,6 +1,6 @@
 #ifndef DELETE_ACCOUNT_H
 #define DELETE_ACCOUNT_H
 
-void delete_account();
+int delete_account(const char *account_number);
 
 #endif

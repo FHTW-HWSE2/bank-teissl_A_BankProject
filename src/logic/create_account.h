@@ -1,18 +1,7 @@
 #ifndef CREATE_ACCOUNT_H
 #define CREATE_ACCOUNT_H
 
-#define MAX_STRING_LENGTH 100
-
-typedef struct {
-    char first_name[MAX_STRING_LENGTH];
-    char last_name[MAX_STRING_LENGTH];
-    char ssn[11];
-    char address[MAX_STRING_LENGTH];
-    char phone[MAX_STRING_LENGTH];
-    char email[MAX_STRING_LENGTH];
-    char branch_code[3];
-    char account_number[9];
-} BankAccount;
+#include "controller.h"
 
 // Core logic function to create and save an account
 void create_account_logic();
