@@ -5,7 +5,8 @@
 #   SPDX-License-Identifier: MIT
 # =========================================================================
 
-require "#{ENV['CMOCK_DIR']}/lib/cmock"
+require_relative '../lib/cmock'
+
 
 raise 'Header file to mock must be specified!' unless ARGV.length >= 1
 
