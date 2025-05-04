@@ -1,0 +1,16 @@
+# ninja log v6
+20	140	7680142088257614	CMakeFiles/BankApp.dir/src/logic/delete_account.c.obj	d13ef20a4976fe7b
+32	148	7680142088377598	CMakeFiles/BankApp.dir/src/data/account_data.c.obj	3079d0626c0923d5
+3	124	7680142088087570	CMakeFiles/BankApp.dir/src/main.c.obj	dcfbffe0ebb0b8b1
+8	122	7680142088137578	CMakeFiles/BankApp.dir/src/logic/controller.c.obj	5921e8b69c46be21
+3	414	7680150379940199	build.ninja	71fea30b82c0e12b
+39	144	7680142088447581	CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj	16450db009a6ff28
+15	150	7680142088207612	CMakeFiles/BankApp.dir/src/logic/create_account.c.obj	d7b940f86bec675e
+26	130	7680142088317599	CMakeFiles/BankApp.dir/src/logic/update_account.c.obj	70a044945f5bcba9
+1	397	7680150379940199	build.ninja	71fea30b82c0e12b
+4	129	7680150381055647	CMakeFiles/BankApp.dir/src/main.c.obj	dcfbffe0ebb0b8b1
+13	131	7680150381152894	CMakeFiles/BankApp.dir/src/logic/delete_account.c.obj	d13ef20a4976fe7b
+8	132	7680150381094644	CMakeFiles/BankApp.dir/src/logic/controller.c.obj	5921e8b69c46be21
+30	149	7680150381317982	CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj	16450db009a6ff28
+19	156	7680150381214010	CMakeFiles/BankApp.dir/src/logic/create_account.c.obj	d7b940f86bec675e
+25	160	7680150381262534	CMakeFiles/BankApp.dir/src/data/account_data.c.obj	3079d0626c0923d5

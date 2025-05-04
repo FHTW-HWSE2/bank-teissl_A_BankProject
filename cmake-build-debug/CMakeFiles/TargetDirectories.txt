@@ -1,0 +1,4 @@
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/BankApp.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir
