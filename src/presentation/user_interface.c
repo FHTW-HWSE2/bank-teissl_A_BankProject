@@ -1,6 +1,7 @@
 #include "user_interface.h"
 #include "src/logic/create_account.h"
 #include "src/logic/delete_account.h"
+#include "src/logic/update_account.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -19,6 +20,7 @@ int show_menu() {
     printf("\n========= Bank Project Menu =========\n");
     printf("1. Create New Account\n");
     printf("2. Delete Account\n");
+    printf("3. Update Account Details\n");
     printf("9. Exit\n");
     printf("Choose an option: ");
 
@@ -86,6 +88,34 @@ void delete_account_ui() {
             break;
         case -3:
             printf("Error: Could not archive deleted account.\n");
+            break;
+        default:
+            printf("Unknown error occurred.\n");
+    }
+}
+
+void update_account_ui() {
+    char account_number[9];
+
+    printf("Enter the Account number to update: ");
+    scanf("%8s", account_number);
+
+    clear_input_buffer();
+
+    int result = update_account(account_number);
+
+    switch (result) {
+        case 0:
+            printf("Account successfully updated.\n");
+            break;
+        case -1:
+            printf("Error: Account not found.\n");
+            break;
+        case -2:
+            printf("Error: Could not delete account.\n");
+            break;
+        case -3:
+            printf("Error: Could not save updated account.\n");
             break;
         default:
             printf("Unknown error occurred.\n");
