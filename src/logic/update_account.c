@@ -8,28 +8,27 @@
 
 #define ACCOUNT_CSV_PATH "../assets/accounts.csv"
 
-void update_account_details_ui(void) {
-    char account_number[9];
+int update_account(const char *account_number) {
     BankAccount account;
 
-    printf("Enter Account Number to update: ");
-    scanf("%8s", account_number);
-
     if (get_account_by_account_number(account_number, &account) != 0) {
-        printf("Error: Account not found.\n");
-        return;
+        return -1;
     }
 
     get_nonempty_input("New First Name: ", account.first_name);
     get_nonempty_input("New Last Name: ", account.last_name);
+    get_nonempty_input("Address: ", account.address);
+    get_nonempty_input("Phone: ", account.phone);
+    get_nonempty_input("Email: ", account.email);
     get_validated_input("New Branch Code (B1/B2): ", account.branch_code, sizeof(account.branch_code), is_valid_branch_code, "Invalid branch code.");
 
     if (remove_account(&account) != 0) {
-        printf("Error: Failed to remove account.\n");
-        return;
+        return -2;
     }
 
-    save_account_to_csv(ACCOUNT_CSV_PATH, &account);
+    if (save_account_to_csv(ACCOUNT_CSV_PATH, &account) != 0) {
+        return -3;
+    }
 
-    printf("Account details updated successfully.\n");
+    return 0;
 }

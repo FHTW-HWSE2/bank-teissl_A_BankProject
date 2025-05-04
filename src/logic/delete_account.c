@@ -10,8 +10,6 @@
 int delete_account(const char *account_number) {
     BankAccount account;
 
-    printf("(%s)\n", account_number); // debug
-
     // Step 1: Load account
     if (get_account_by_account_number(account_number, &account) != 0) {
         return -1; // Error: account not found

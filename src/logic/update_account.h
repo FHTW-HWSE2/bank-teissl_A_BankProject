@@ -1,7 +1,6 @@
-// File: src/logic/update_account.h
 #ifndef UPDATE_ACCOUNT_H
 #define UPDATE_ACCOUNT_H
 
-void update_account_details_ui(void);
+int update_account();
 
-#endif // UPDATE_ACCOUNT_H
+#endif
