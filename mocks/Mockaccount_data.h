@@ -2,8 +2,8 @@
 #ifndef _MOCKACCOUNT_DATA_H
 #define _MOCKACCOUNT_DATA_H
 
-#include "unity.h"
-#include "account_data.h"
+#include "../unity/src/unity.h"
+#include "../src/data/account_data.h"
 
 /* Ignore the following warnings, since we are copying code */
 #if defined(__GNUC__) && !defined(__ICC) && !defined(__TMS470__)
