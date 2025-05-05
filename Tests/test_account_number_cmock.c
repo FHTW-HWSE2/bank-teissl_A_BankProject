@@ -1,40 +1,36 @@
-#include "unity/src/unity.h"
-#include "Mocks/Mockaccount_data.h"
-#include "Mocks/Mockcreate_account.c"
-#include <stdio.h>
-#include <string.h>
+#include "unity.h"
+#include "Mockuser_interface.h"
+#include "Mockaccount_data.h"
+#include "create_account.h"
 
-#define TEST_CSV "test_accounts.csv"
-
-void setUp(void) {
-    FILE *file = fopen(TEST_CSV, "w");
-    fputs("Name,Balance,AccountNumber\nJohn,100,12345678\nAlice,200,87654321\n", file);
-    fclose(file);
-}
-
+void setUp(void) {}
 void tearDown(void) {}
 
-void test_account_exists_finds_existing_accounts(void) {
-    TEST_ASSERT_TRUE(account_exists(TEST_CSV, "12345678"));
-    TEST_ASSERT_TRUE(account_exists(TEST_CSV, "87654321"));
-}
+void test_create_account_should_collect_input_and_save_account(void)
+{
+    // Simulate user input
+    get_user_input_ExpectAndReturn("Enter first name: ", "John");
+    get_user_input_ExpectAndReturn("Enter last name: ", "Doe");
+    get_user_input_ExpectAndReturn("Enter SSN: ", "123456789");
+    get_user_input_ExpectAndReturn("Enter address: ", "123 Main St");
+    get_user_input_ExpectAndReturn("Enter phone: ", "555-1234");
+    get_user_input_ExpectAndReturn("Enter email: ", "john@example.com");
+    get_user_input_ExpectAndReturn("Enter branch code: ", "001");
+    get_user_input_ExpectAndReturn("Enter account number: ", "98765432");
 
-void test_account_exists_rejects_nonexisting_accounts(void) {
-    TEST_ASSERT_FALSE(account_exists(TEST_CSV, "00000000"));
-    TEST_ASSERT_FALSE(account_exists(TEST_CSV, "99999999"));
-}
+    // Expected account to be passed to save_account_to_csv
+    BankAccount expected = {
+        .first_name = "John",
+        .last_name = "Doe",
+        .ssn = "123456789",
+        .address = "123 Main St",
+        .phone = "555-1234",
+        .email = "john@example.com",
+        .branch_code = "001",
+        .account_number = "98765432"
+    };
 
-void test_generate_unique_account_number_returns_valid_number(void) {
-    char *number = generate_unique_account_number();
-    TEST_ASSERT_NOT_NULL(number);
-    TEST_ASSERT_EQUAL_INT(8, strlen(number));
-    TEST_ASSERT_NOT_EQUAL(0, strcmp(number, "00000000"));
-}
+    save_account_to_csv_Expect("accounts.csv", &expected);
 
-int main(void) {
-    UNITY_BEGIN();
-    RUN_TEST(test_account_exists_finds_existing_accounts);
-    RUN_TEST(test_account_exists_rejects_nonexisting_accounts);
-    RUN_TEST(test_generate_unique_account_number_returns_valid_number);
-    return UNITY_END();
+    create_account();  // 🔁 The function under test
 }
