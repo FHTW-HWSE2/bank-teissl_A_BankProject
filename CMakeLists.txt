@@ -9,6 +9,14 @@ project(BANK-Teissl_A_BANKPROJECT C)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
+if(COVERAGE)
+    add_compile_options(--coverage -O0 -g)
+    add_link_options(--coverage)
+endif()
+
+add_custom_target(coverage
+COMMAND gcovr --root .. --object-directory . --filter '../src/' --html --html-details -o coverage.html
+WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
 # Include header directory
 include_directories(${PROJECT_SOURCE_DIR})

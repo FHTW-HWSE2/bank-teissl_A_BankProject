@@ -1,0 +1,19 @@
+Start testing: Apr 28 00:10 Mitteleuropäische Sommerzeit
+----------------------------------------------------------
+Unable to find executable: test_account_number
+1/1 Testing: AccountNumberTest
+1/1 Test: AccountNumberTest
+Command: ""
+Directory: D:/Ausbildung/FHTW/SS2025/HWSE2/Bank project/bank-teissl_A_BankProject/build
+"AccountNumberTest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"AccountNumberTest" end time: Apr 28 00:10 Mitteleuropäische Sommerzeit
+"AccountNumberTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 28 00:10 Mitteleuropäische Sommerzeit

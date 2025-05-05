@@ -1,0 +1,5 @@
+D:/Ausbildung/FHTW/SS2025/HWSE2/Bank project/bank-teissl_A_BankProject/build/CMakeFiles/coverage.dir
+D:/Ausbildung/FHTW/SS2025/HWSE2/Bank project/bank-teissl_A_BankProject/build/CMakeFiles/BankApp.dir
+D:/Ausbildung/FHTW/SS2025/HWSE2/Bank project/bank-teissl_A_BankProject/build/CMakeFiles/test.dir
+D:/Ausbildung/FHTW/SS2025/HWSE2/Bank project/bank-teissl_A_BankProject/build/CMakeFiles/edit_cache.dir
+D:/Ausbildung/FHTW/SS2025/HWSE2/Bank project/bank-teissl_A_BankProject/build/CMakeFiles/rebuild_cache.dir

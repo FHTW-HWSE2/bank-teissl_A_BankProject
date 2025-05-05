@@ -33,7 +33,7 @@ bool account_exists(const char *filename, const char *account_number) {
     fclose(file);
     return false;
 }
-
+// TODo return 1
 int save_account_to_csv(const char *filename, const BankAccount *account) {
     FILE *file = fopen(filename, "a+");
     if (!file) {
