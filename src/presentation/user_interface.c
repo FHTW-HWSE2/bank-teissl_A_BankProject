@@ -2,18 +2,23 @@
 #include "src/logic/create_account.h"
 #include "src/logic/delete_account.h"
 #include "src/logic/update_account.h"
+#include "src/logic/bank_logic.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
+// Error display for file-related issues
 void open_file_error() {
     printf("Error opening file.\n");
 }
 
+// Clear leftover input in buffer
 static void clear_input_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+// Show menu to user and return selected option
 int show_menu() {
     int choice;
 
@@ -21,22 +26,22 @@ int show_menu() {
     printf("1. Create New Account\n");
     printf("2. Delete Account\n");
     printf("3. Update Account Details\n");
+    printf("4. Deposit Funds\n");
     printf("9. Exit\n");
     printf("Choose an option: ");
 
     if (scanf("%d", &choice) != 1)
     {
         printf("Invalid input. Please enter a number.\n");
-        // Clear invalid input
         while (getchar() != '\n');
-        return -1; // Indicate invalid input
+        return -1;
     }
 
     clear_input_buffer();
-
     return choice;
 }
 
+// Get string input from user and ensure it's not empty
 void get_nonempty_input(const char *prompt, char *buffer) {
     while (1) {
         printf("%s", prompt);
@@ -48,6 +53,7 @@ void get_nonempty_input(const char *prompt, char *buffer) {
     }
 }
 
+// Input with validation function
 void get_validated_input(const char *prompt, char *buffer, int size, int (*validate)(const char *), const char *error_msg) {
     while (1) {
         printf("%s", prompt);
@@ -59,6 +65,7 @@ void get_validated_input(const char *prompt, char *buffer, int size, int (*valid
     }
 }
 
+// Print confirmation after account creation
 void print_account_confirmation(const BankAccount *account) {
     printf("\nAccount created successfully!\n");
     printf("Account holder: %s %s\n", account->first_name, account->last_name);
@@ -68,9 +75,9 @@ void print_account_confirmation(const BankAccount *account) {
     printf("Account balance: %lu\n", account->balance);
 }
 
+// UI for deleting account
 void delete_account_ui() {
     char account_number[9];
-
     printf("Enter the Account number to delete: ");
     scanf("%8s", account_number);
 
@@ -94,12 +101,11 @@ void delete_account_ui() {
     }
 }
 
+// UI for updating account
 void update_account_ui() {
     char account_number[9];
-
     printf("Enter the Account number to update: ");
     scanf("%8s", account_number);
-
     clear_input_buffer();
 
     int result = update_account(account_number);
@@ -120,4 +126,23 @@ void update_account_ui() {
         default:
             printf("Unknown error occurred.\n");
     }
+}
+
+// 🆕 UI for deposit funds
+void deposit_ui() {
+    char account_number[20];
+    char branch_code[10];
+    int amount;
+
+    printf("\n--- Deposit Funds ---\n");
+    printf("Enter account number: ");
+    scanf("%19s", account_number);
+
+    printf("Enter branch code (B1 or B2): ");
+    scanf("%9s", branch_code);
+
+    printf("Enter amount to deposit (in whole cents): ");
+    scanf("%d", &amount);
+
+    deposit_funds(account_number, branch_code, amount);
 }

@@ -141,3 +141,61 @@ int remove_account(const BankAccount *account) {
 
     return found ? 0 : -1;
 }
+
+
+// ✅✅✅ DODATO: Update balance function for deposits
+int update_account_balance(const char* account_number, int new_balance) {
+    FILE* file = fopen(CSV_FILE, "r");
+    FILE* temp = fopen("temp.csv", "w");
+    if (!file || !temp) {
+        perror("File open failed");
+        return 0;
+    }
+
+    char line[512];
+    int updated = 0;
+
+    // Read and write header
+    if (fgets(line, sizeof(line), file)) {
+        fputs(line, temp);
+    }
+
+    while (fgets(line, sizeof(line), file)) {
+        BankAccount acc;
+
+        sscanf(line, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu",
+               acc.first_name,
+               acc.last_name,
+               acc.ssn,
+               acc.address,
+               acc.phone,
+               acc.email,
+               acc.branch_code,
+               acc.account_number,
+               &acc.balance);
+
+        if (strcmp(acc.account_number, account_number) == 0) {
+            acc.balance = new_balance;
+            updated = 1;
+        }
+
+        fprintf(temp, "%s,%s,%s,%s,%s,%s,%s,%s,%lu\n",
+                acc.first_name,
+                acc.last_name,
+                acc.ssn,
+                acc.address,
+                acc.phone,
+                acc.email,
+                acc.branch_code,
+                acc.account_number,
+                acc.balance);
+    }
+
+    fclose(file);
+    fclose(temp);
+
+    remove(CSV_FILE);
+    rename("temp.csv", CSV_FILE);
+
+    return updated;
+}

@@ -9,4 +9,6 @@ void get_validated_input(const char *prompt, char *buffer, int size, int (*valid
 int show_menu();
 void delete_account_ui();
 void update_account_ui();
+void deposit_ui();
+
 #endif
