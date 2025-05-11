@@ -31,11 +31,15 @@ void start()
             case 5:
                 withdraw_ui();
             break;
+            case 6:
+                transfer_ui();  // 🆕 Added transfer functionality
+            break;
             case 9:
                 exit(0);
             break;
             default:
-                break;
+                printf("Invalid option. Try again.\n");
+            break;
         }
     }
 }

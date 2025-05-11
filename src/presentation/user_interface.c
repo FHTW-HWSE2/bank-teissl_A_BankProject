@@ -27,7 +27,8 @@ int show_menu() {
     printf("2. Delete Account\n");
     printf("3. Update Account Details\n");
     printf("4. Deposit Funds\n");
-    printf("5. Withdraw Funds\n"); // New option
+    printf("5. Withdraw Funds\n");
+    printf("6. Internal Transfer\n");  // ➕ Nova opcija
     printf("9. Exit\n");
     printf("Choose an option: ");
 
@@ -165,4 +166,23 @@ void withdraw_ui() {
     scanf("%d", &amount);
 
     withdraw_funds(account_number, branch_code, amount);
+}
+
+// 🆕 UI for internal transfer
+void transfer_ui() {
+    char from_account[20];
+    char to_account[20];
+    int amount;
+
+    printf("\n--- Internal Transfer ---\n");
+    printf("Enter FROM account number: ");
+    scanf("%19s", from_account);
+
+    printf("Enter TO account number: ");
+    scanf("%19s", to_account);
+
+    printf("Enter amount to transfer (in whole cents): ");
+    scanf("%d", &amount);
+
+    transfer_funds(from_account, to_account, amount);
 }
