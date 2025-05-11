@@ -16,24 +16,26 @@ void start()
 
         switch (choice)
         {
-        case 1:
-            create_account_logic();
+            case 1:
+                create_account_logic();
             break;
-        case 2:
-            delete_account_ui();
+            case 2:
+                delete_account_ui();
             break;
-        case 3:
-            update_account_ui();
+            case 3:
+                update_account_ui();
             break;
             case 4:
                 deposit_ui();
             break;
-
-        case 9:
-            exit(0);
+            case 5:
+                withdraw_ui();
             break;
-        default:
+            case 9:
+                exit(0);
             break;
+            default:
+                break;
         }
     }
 }

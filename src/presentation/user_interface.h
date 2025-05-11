@@ -10,5 +10,7 @@ int show_menu();
 void delete_account_ui();
 void update_account_ui();
 void deposit_ui();
+void withdraw_ui();  // UI for withdrawing funds
+
 
 #endif

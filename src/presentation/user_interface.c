@@ -27,6 +27,7 @@ int show_menu() {
     printf("2. Delete Account\n");
     printf("3. Update Account Details\n");
     printf("4. Deposit Funds\n");
+    printf("5. Withdraw Funds\n"); // New option
     printf("9. Exit\n");
     printf("Choose an option: ");
 
@@ -128,7 +129,7 @@ void update_account_ui() {
     }
 }
 
-// 🆕 UI for deposit funds
+// UI for deposit funds
 void deposit_ui() {
     char account_number[20];
     char branch_code[10];
@@ -145,4 +146,23 @@ void deposit_ui() {
     scanf("%d", &amount);
 
     deposit_funds(account_number, branch_code, amount);
+}
+
+// UI for withdraw funds
+void withdraw_ui() {
+    char account_number[20];
+    char branch_code[10];
+    int amount;
+
+    printf("\n--- Withdraw Funds ---\n");
+    printf("Enter account number: ");
+    scanf("%19s", account_number);
+
+    printf("Enter branch code (B1 or B2): ");
+    scanf("%9s", branch_code);
+
+    printf("Enter amount to withdraw (in whole cents): ");
+    scanf("%d", &amount);
+
+    withdraw_funds(account_number, branch_code, amount);
 }

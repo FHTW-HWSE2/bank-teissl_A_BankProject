@@ -48,3 +48,45 @@ void deposit_funds(const char* account_number, const char* branch_code, int amou
 
     printf("Deposit successful. New balance: %d\n", new_balance);
 }
+void withdraw_funds(const char* account_number, const char* branch_code, int amount) {
+    if (amount <= 0 || amount % 1 != 0) {
+        printf("Invalid withdrawal amount.\n");
+        return;
+    }
+
+    if (strcmp(branch_code, "B1") != 0 && strcmp(branch_code, "B2") != 0) {
+        printf("Invalid branch code.\n");
+        return;
+    }
+
+    BankAccount account;
+    if (!get_account_by_account_number(account_number, &account)) {
+        printf("Account does not exist.\n");
+        return;
+    }
+
+    int current_balance = get_latest_balance(account_number);
+
+    if (amount > current_balance) {
+        printf("Insufficient funds.\n");
+        return;
+    }
+
+    int new_balance = current_balance - amount;
+
+    account.balance = new_balance;
+    update_account_balance(account.account_number, account.balance);
+
+
+    Transaction txn;
+    strcpy(txn.account_number, account_number);
+    strcpy(txn.branch_code, branch_code);
+    txn.amount = -amount;
+    txn.balance_after = new_balance;
+    txn.timestamp = time(NULL);
+    strcpy(txn.type, "withdraw");
+
+    store_transaction(&txn);
+
+    printf("Withdrawal successful. New balance: %d\n", new_balance);
+}

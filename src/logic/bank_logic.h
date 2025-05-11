@@ -7,4 +7,6 @@
 
 void deposit_funds(const char* account_number, const char* branch_code, int amount);
 
+void withdraw_funds(const char* account_number, const char* branch_code, int amount);
+
 #endif //BANK_LOGIC_H
