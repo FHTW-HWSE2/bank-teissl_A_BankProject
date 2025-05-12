@@ -24,7 +24,6 @@ int deposit_funds(const char* account_number, const char* branch_code, int amoun
 
     save_account_to_csv(ACCOUNT_CSV_PATH, &account);
 
-    // Create and store transaction
     Transaction txn;
     strcpy(txn.account_number, account_number);
     strcpy(txn.branch_code, branch_code);

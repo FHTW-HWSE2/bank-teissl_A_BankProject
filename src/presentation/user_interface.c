@@ -146,16 +146,15 @@ void update_account_ui()
     }
 }
 
-// 🆕 UI for deposit funds
 void deposit_ui()
 {
-    char account_number[20];
-    char branch_code[10];
+    char account_number[9];
+    char branch_code[3];
     int amount;
 
     printf("\n--- Deposit Funds ---\n");
     printf("Enter account number: ");
-    scanf("%19s", account_number);
+    scanf("%8s", account_number);
 
     printf("Enter branch code (B1 or B2): ");
     scanf("%9s", branch_code);

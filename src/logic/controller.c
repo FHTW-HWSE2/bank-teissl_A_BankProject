@@ -28,7 +28,6 @@ void start()
         case 4:
             deposit_ui();
             break;
-
         case 9:
             exit(0);
             break;
