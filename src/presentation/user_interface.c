@@ -26,13 +26,18 @@ int show_menu()
 {
     int choice;
 
-    printf("\n========= Bank Project Menu =========\n");
-    printf("1. Create New Account\n");
-    printf("2. Delete Account\n");
-    printf("3. Update Account Details\n");
-    printf("4. Deposit Funds\n");
-    printf("9. Exit\n");
-    printf("Choose an option: ");
+    printf("\n");
+    printf("+--------------------------------------+\n");
+    printf("|         BANK MANAGEMENT SYSTEM       |\n");
+    printf("+--------------------------------------+\n");
+    printf("|  1. Create New Bank Account          |\n");
+    printf("|  2. Delete Existing Account          |\n");
+    printf("|  3. Update Account Information       |\n");
+    printf("|  4. Deposit Funds                    |\n");
+    printf("|  9. Exit                             |\n");
+    printf("+--------------------------------------+\n");
+
+    printf("Enter your choice: ");
 
     if (scanf("%d", &choice) != 1)
     {
