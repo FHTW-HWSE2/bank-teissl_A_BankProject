@@ -1,7 +1,6 @@
 #include "create_account.h"
 #include "delete_account.h"
 #include "update_account.h"
-#include "bank_logic.h"
 #include "src/presentation/user_interface.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,6 +26,9 @@ void start()
             break;
         case 4:
             deposit_ui();
+            break;
+        case 5:
+            withdraw_ui();
             break;
         case 9:
             exit(0);

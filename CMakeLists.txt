@@ -35,10 +35,9 @@ add_executable(BankApp
                 src/logic/update_account.c
                 src/data/account_data.c 
                 src/presentation/user_interface.c
-        src/logic/bank_logic.h
-        src/logic/bank_logic.c
-        src/data/transactions_db.h
-        src/data/transactions_db.c
+                src/logic/bank_logic.c
+                src/logic/withdrawal/withdrawal.c
+                src/data/transactions_db.c
 )
 
 #add_executable(AccountNumberTest

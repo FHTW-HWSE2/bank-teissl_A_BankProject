@@ -1,3 +1,4 @@
 AccountNumber,BranchCode,Amount,BalanceAfter,Timestamp,Type
 00027885,B1,1500,1500,1747060794,deposit
 00027885,B1,1500,1500,1747060872,deposit
+00027885,B1,-200,1300,1747072081,withdraw
