@@ -168,6 +168,7 @@ void deposit_ui()
     scanf("%d", &amount);
 
     // Check that the amount is in whole cents and greater than 0
+    // TODO
     if (amount <= 0 || amount % 1 != 0)
     {
         printf("Invalid deposit amount.\n");

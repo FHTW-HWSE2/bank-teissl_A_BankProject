@@ -50,3 +50,10 @@ To do's:
 - implement a new Issue (maybe deleting a Bank Account)
 - implement new tests
 - Test coverage
+
+------------------------
+## 12.05.2025
+- deposit funds implemented and merged
+- internal transfer and withdrawal implemented (needs to be refined)
+- Design changes
+- cmock (not finished)
