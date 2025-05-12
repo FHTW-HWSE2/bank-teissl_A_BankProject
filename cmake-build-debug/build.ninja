@@ -77,6 +77,13 @@ build CMakeFiles/BankApp.dir/src/logic/create_account.c.obj: C_COMPILER__BankApp
   OBJECT_DIR = CMakeFiles\BankApp.dir
   OBJECT_FILE_DIR = CMakeFiles\BankApp.dir\src\logic
 
+build CMakeFiles/BankApp.dir/src/logic/update_account.c.obj: C_COMPILER__BankApp_unscanned_Debug C$:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/src/logic/update_account.c || cmake_object_order_depends_target_BankApp
+  DEP_FILE = CMakeFiles\BankApp.dir\src\logic\update_account.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra -pedantic -Wno-unused-parameter
+  INCLUDES = -IC:/Users/bojan/CLionProjects/bank-teissl_A_BankProject
+  OBJECT_DIR = CMakeFiles\BankApp.dir
+  OBJECT_FILE_DIR = CMakeFiles\BankApp.dir\src\logic
+
 build CMakeFiles/BankApp.dir/src/data/account_data.c.obj: C_COMPILER__BankApp_unscanned_Debug C$:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/src/data/account_data.c || cmake_object_order_depends_target_BankApp
   DEP_FILE = CMakeFiles\BankApp.dir\src\data\account_data.c.obj.d
   FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra -pedantic -Wno-unused-parameter
@@ -91,6 +98,20 @@ build CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj: C_COMPILER__
   OBJECT_DIR = CMakeFiles\BankApp.dir
   OBJECT_FILE_DIR = CMakeFiles\BankApp.dir\src\presentation
 
+build CMakeFiles/BankApp.dir/src/logic/bank_logic.c.obj: C_COMPILER__BankApp_unscanned_Debug C$:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/src/logic/bank_logic.c || cmake_object_order_depends_target_BankApp
+  DEP_FILE = CMakeFiles\BankApp.dir\src\logic\bank_logic.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra -pedantic -Wno-unused-parameter
+  INCLUDES = -IC:/Users/bojan/CLionProjects/bank-teissl_A_BankProject
+  OBJECT_DIR = CMakeFiles\BankApp.dir
+  OBJECT_FILE_DIR = CMakeFiles\BankApp.dir\src\logic
+
+build CMakeFiles/BankApp.dir/src/data/transactions_db.c.obj: C_COMPILER__BankApp_unscanned_Debug C$:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/src/data/transactions_db.c || cmake_object_order_depends_target_BankApp
+  DEP_FILE = CMakeFiles\BankApp.dir\src\data\transactions_db.c.obj.d
+  FLAGS = -g -std=gnu99 -fdiagnostics-color=always -Wall -Wextra -pedantic -Wno-unused-parameter
+  INCLUDES = -IC:/Users/bojan/CLionProjects/bank-teissl_A_BankProject
+  OBJECT_DIR = CMakeFiles\BankApp.dir
+  OBJECT_FILE_DIR = CMakeFiles\BankApp.dir\src\data
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target BankApp
@@ -99,7 +120,7 @@ build CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj: C_COMPILER__
 #############################################
 # Link the executable BankApp.exe
 
-build BankApp.exe: C_EXECUTABLE_LINKER__BankApp_Debug CMakeFiles/BankApp.dir/src/main.c.obj CMakeFiles/BankApp.dir/src/logic/controller.c.obj CMakeFiles/BankApp.dir/src/logic/delete_account.c.obj CMakeFiles/BankApp.dir/src/logic/create_account.c.obj CMakeFiles/BankApp.dir/src/data/account_data.c.obj CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj
+build BankApp.exe: C_EXECUTABLE_LINKER__BankApp_Debug CMakeFiles/BankApp.dir/src/main.c.obj CMakeFiles/BankApp.dir/src/logic/controller.c.obj CMakeFiles/BankApp.dir/src/logic/delete_account.c.obj CMakeFiles/BankApp.dir/src/logic/create_account.c.obj CMakeFiles/BankApp.dir/src/logic/update_account.c.obj CMakeFiles/BankApp.dir/src/data/account_data.c.obj CMakeFiles/BankApp.dir/src/presentation/user_interface.c.obj CMakeFiles/BankApp.dir/src/logic/bank_logic.c.obj CMakeFiles/BankApp.dir/src/data/transactions_db.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\BankApp.dir
