@@ -25,8 +25,8 @@ void start()
         case 3:
             update_account_ui();
             break;
-            case 4:
-                deposit_ui();
+        case 4:
+            deposit_ui();
             break;
 
         case 9:

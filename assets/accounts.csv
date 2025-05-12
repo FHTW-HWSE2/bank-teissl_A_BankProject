@@ -1,4 +1,5 @@
 FirstName,LastName,SSN,Address,phone,email,BranchCode,AccountNumber,Balance
-Jangin,Rasheed,1231231231,Berzeliusgasse 14,06784444444,jangin@rasheed,B1,00027885,0
 qwer,qwer,1231231231,qwer,wqer,wqer,B1,00013449,0
 Bojan,Veljkovic,1234567890,Beogradska 12,012335583,bojan@example.com,B1,00015044,0
+Balance
+Jangin,Rasheed,1231231231,Berzeliusgasse 14,06784444444,jangin@rasheed,B1,00027885,1500

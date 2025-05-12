@@ -4,47 +4,36 @@
 #include <string.h>
 #include <stdio.h>
 
-void deposit_funds(const char* account_number, const char* branch_code, int amount) {
-    // Check that the amount is in whole cents and greater than 0
-    if (amount <= 0 || amount % 1 != 0) {
-        printf("Invalid deposit amount.\n");
-        return;
-    }
+#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
 
-    // Check that the branch code is valid
-    if (strcmp(branch_code, "B1") != 0 && strcmp(branch_code, "B2") != 0) {
-        printf("Invalid branch code.\n");
-        return;
-    }
 
+int deposit_funds(const char* account_number, const char* branch_code, int amount) {
     // Find account
     BankAccount account;
-    if (!get_account_by_account_number(account_number, &account)) {
-        printf("Account does not exist.\n");
-        return;
+    if (get_account_by_account_number(account_number, &account) != 0) {
+        printf("**********%s*********\n", account_number); // Debugging
+        return -1;
     }
 
-    // Get current balance from transactions
-    int current_balance = get_latest_balance(account_number);
-
-    // Calculate new balance
-    int new_balance = current_balance + amount;
-
     // Update balance in account structure
-    account.balance = new_balance;
-    update_account_balance(account.account_number, account.balance);
+    account.balance += amount;
 
+    if (remove_account(&account) != 0) {
+        return -2;
+    }
+
+    save_account_to_csv(ACCOUNT_CSV_PATH, &account);
 
     // Create and store transaction
     Transaction txn;
     strcpy(txn.account_number, account_number);
     strcpy(txn.branch_code, branch_code);
     txn.amount = amount;
-    txn.balance_after = new_balance;
+    txn.balance_after = account.balance;
     txn.timestamp = time(NULL);
     strcpy(txn.type, "deposit");
 
     store_transaction(&txn);
 
-    printf("Deposit successful. New balance: %d\n", new_balance);
+    return 0;
 }
