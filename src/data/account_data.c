@@ -38,7 +38,7 @@ int save_account_to_csv(const char *filename, const BankAccount *account) {
     FILE *file = fopen(filename, "a+");
     if (!file) {
         open_file_error();
-        return 0;
+        return -1;
     }
 
     fseek(file, 0, SEEK_END);

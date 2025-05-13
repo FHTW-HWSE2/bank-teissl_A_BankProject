@@ -190,10 +190,13 @@ void transaction_ui(const char type)
         printf("Error: Account not found.\n");
         break;
     case -2:
-        printf("Error: Could not save updated account.\n");
+        printf("Error: Insufficient funds.\n");
         break;
     case -3:
         printf("Error: Could not delete account.\n");
+        break;
+    case -4:
+        printf("Error: Could not save account.\n");
         break;
     default:
         printf("Unknown error occurred.\n");

@@ -9,15 +9,14 @@
 
 
 int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
-    // Find account
     BankAccount account;
-    if (get_account_by_account_number(account_number, &account) != 0) {
+
+    if (get_account_by_account_number(account_number, &account) != 0)
         return -1;
-    }
 
     if (type == 'w') {
         if (account.balance < amount) {
-            return -3; // Insufficient funds
+            return -2; // Insufficient funds
         }
         account.balance -= amount;
     } else if (type != 'd')  // Invalid transaction type
@@ -26,10 +25,12 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
     }
 
     if (remove_account(&account) != 0) {
-        return -2;
+        return -3;
     }
 
-    save_account_to_csv(ACCOUNT_CSV_PATH, &account);
+    if (save_account_to_csv(ACCOUNT_CSV_PATH, &account) != 0) {
+        return -4;
+    }
 
     Transaction txn;
     strcpy(txn.account_number, account_number);
@@ -37,8 +38,12 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
     txn.amount = amount;
     txn.balance_after = account.balance;
     txn.timestamp = time(NULL);
-        strcpy(txn.type, "deposit");
 
+    if (type == 'd')
+        strcpy(txn.type, "deposit");
+    else if (type == 'w')
+        strcpy(txn.type, "withdraw");
+    
     store_transaction(&txn);
 
     return 0;
