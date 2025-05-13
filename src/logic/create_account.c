@@ -28,6 +28,7 @@ void start_account_creation_ui(BankAccount *account) {
 
     get_validated_input("SSN (10 digits): ", account->ssn, sizeof(account->ssn), is_valid_ssn, "Invalid SSN. Must be 10 digits.");
     get_validated_input("Branch code (B1/B2): ", account->branch_code, sizeof(account->branch_code), is_valid_branch_code, "Invalid branch code. Use 'B1' or 'B2'.");
+    account->branch_code[0] = toupper((unsigned char)account->branch_code[0]);
     account->balance = 0; // Initialize balance to 0
     print_account_confirmation(account);
 }
@@ -52,6 +53,5 @@ int is_valid_ssn(const char *ssn) {
 }
 
 int is_valid_branch_code(const char *branch_code) {
-    return (strcmp(branch_code, "B1") == 0 || strcmp(branch_code, "B2") == 0);
+    return (strcmp(branch_code, "B1") == 0 || strcmp(branch_code, "B2") == 0 || strcmp(branch_code, "b1") == 0 || strcmp(branch_code, "b2") == 0);
 }
-

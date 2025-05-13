@@ -25,10 +25,12 @@ void start()
             update_account_ui();
             break;
         case 4:
-            deposit_ui();
+            transaction_ui('d'); // deposit
             break;
         case 5:
-            withdraw_ui();
+            transaction_ui('w'); // withdraw
+            break;
+        case 6:
             break;
         case 9:
             exit(0);

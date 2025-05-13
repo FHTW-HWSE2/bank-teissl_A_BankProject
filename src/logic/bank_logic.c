@@ -3,20 +3,27 @@
 #include "bank_logic.h"
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
 #define ACCOUNT_CSV_PATH "../assets/accounts.csv"
 
 
-int deposit_funds(const char* account_number, const char* branch_code, int amount) {
+int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
     // Find account
     BankAccount account;
     if (get_account_by_account_number(account_number, &account) != 0) {
-        printf("**********%s*********\n", account_number); // Debugging
         return -1;
     }
 
-    // Update balance in account structure
-    account.balance += amount;
+    if (type == 'w') {
+        if (account.balance < amount) {
+            return -3; // Insufficient funds
+        }
+        account.balance -= amount;
+    } else if (type != 'd')  // Invalid transaction type
+    {
+        account.balance += amount;
+    }
 
     if (remove_account(&account) != 0) {
         return -2;
@@ -30,9 +37,21 @@ int deposit_funds(const char* account_number, const char* branch_code, int amoun
     txn.amount = amount;
     txn.balance_after = account.balance;
     txn.timestamp = time(NULL);
-    strcpy(txn.type, "deposit");
+        strcpy(txn.type, "deposit");
 
     store_transaction(&txn);
 
     return 0;
+}
+
+int is_valid_account_number(const char *number)
+{
+    if (strlen(number) != 8)
+        return 0;
+    for (int i = 0; i < 8; i++)
+    {
+        if (!isdigit(number[i]))
+            return 0;
+    }
+    return 1;
 }

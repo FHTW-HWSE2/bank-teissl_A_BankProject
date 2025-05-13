@@ -3,7 +3,6 @@
 #include "src/logic/delete_account.h"
 #include "src/logic/update_account.h"
 #include "src/logic/bank_logic.h"
-#include "src/logic/withdrawal/withdrawal.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -152,105 +151,49 @@ void update_account_ui()
         printf("Unknown error occurred.\n");
     }
 }
-
-void deposit_ui()
+// TODO weitermachen
+void transaction_ui(const char type)
 {
     char account_number[9];
     char branch_code[3];
     int amount;
 
-    printf("\n--- Deposit Funds ---\n");
-    printf("Enter account number: ");
-    scanf("%8s", account_number);
+    get_validated_input("Enter Branch code (B1/B2): ", branch_code, sizeof(branch_code), is_valid_branch_code, "Invalid branch code. Use 'B1' or 'B2'.");
+    get_validated_input("Enter account number: ", account_number, sizeof(account_number), is_valid_account_number, "Invalid account number. Must be 8 digits.");
 
-    printf("Enter branch code (B1 or B2): ");
-    scanf("%9s", branch_code);
-
-    printf("Enter amount to deposit (in whole cents): ");
+    if (type == 'd')
+    {
+        printf("Enter amount to deposit (in whole cents): ");
+    }
+    else if (type == 'w')
+    {
+        printf("Enter amount to withdraw (in whole cents): ");
+    }
     scanf("%d", &amount);
 
     // Check that the amount is in whole cents and greater than 0
     // TODO
     if (amount <= 0 || amount % 1 != 0)
     {
-        printf("Invalid deposit amount.\n");
+        printf("Invalid amount.\n");
         return;
     }
 
-    // Check that the branch code is valid
-    if (strcmp(branch_code, "B1") != 0 && strcmp(branch_code, "B2") != 0)
-    {
-        printf("Invalid branch code.\n");
-        return;
-    }
-
-    int result = deposit_funds(account_number, branch_code, amount);
+    int result = do_transaction(account_number, branch_code, amount, type);
 
     switch (result)
     {
     case 0:
-        printf("deposit added successfully.\n");
+        printf("Transaction done.\n");
         break;
     case -1:
         printf("Error: Account not found.\n");
         break;
     case -2:
-        printf("Error: Could not delete account.\n");
-        break;
-    case -3:
         printf("Error: Could not save updated account.\n");
         break;
-    default:
-        printf("Unknown error occurred.\n");
-    }
-}
-
-void withdraw_ui()
-{
-    char account_number[9];
-    char branch_code[3];
-    int amount;
-
-    printf("\n--- Withdraw Funds ---\n");
-    printf("Enter account number: ");
-    scanf("%8s", account_number);
-
-    printf("Enter branch code (B1 or B2): ");
-    scanf("%9s", branch_code);
-
-    printf("Enter amount to withdraw (in whole cents): ");
-    scanf("%d", &amount);
-
-    // Check that the amount is in whole cents and greater than 0
-    // TODO
-    if (amount <= 0 || amount % 1 != 0)
-    {
-        printf("Invalid deposit amount.\n");
-        return;
-    }
-
-    // Check that the branch code is valid
-    if (strcmp(branch_code, "B1") != 0 && strcmp(branch_code, "B2") != 0)
-    {
-        printf("Invalid branch code.\n");
-        return;
-    }
-
-    int result = withdraw_funds(account_number, branch_code, amount);
-
-    switch (result)
-    {
-    case 0:
-        printf("Funds withdrawn successfully.\n");
-        break;
-    case -1:
-        printf("Error: Account not found.\n");
-        break;
-    case -2:
-        printf("Error: Could not delete account.\n");
-        break;
     case -3:
-        printf("Error: Could not save updated account.\n");
+        printf("Error: Could not delete account.\n");
         break;
     default:
         printf("Unknown error occurred.\n");

@@ -36,7 +36,6 @@ add_executable(BankApp
                 src/data/account_data.c 
                 src/presentation/user_interface.c
                 src/logic/bank_logic.c
-                src/logic/withdrawal/withdrawal.c
                 src/data/transactions_db.c
 )
 
