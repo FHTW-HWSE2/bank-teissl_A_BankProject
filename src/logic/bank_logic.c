@@ -19,7 +19,7 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
             return -2; // Insufficient funds
         }
         account.balance -= amount;
-    } else if (type != 'd')  // Invalid transaction type
+    } else if (type == 'd')  // Invalid transaction type
     {
         account.balance += amount;
     }
@@ -27,7 +27,7 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
     if (remove_account(&account) != 0) {
         return -3;
     }
-
+    
     if (save_account_to_csv(ACCOUNT_CSV_PATH, &account) != 0) {
         return -4;
     }

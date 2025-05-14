@@ -33,6 +33,7 @@ bool account_exists(const char *filename, const char *account_number) {
     fclose(file);
     return false;
 }
+
 // TODo return 1
 int save_account_to_csv(const char *filename, const BankAccount *account) {
     FILE *file = fopen(filename, "a+");
@@ -43,10 +44,10 @@ int save_account_to_csv(const char *filename, const BankAccount *account) {
 
     fseek(file, 0, SEEK_END);
     if (ftell(file) == 0) {
-        fprintf(file, "FirstName,LastName,SSN,Address,phone,email,BranchCode,AccountNumber,Balance\n");
+        fprintf(file, "FirstName,LastName,SSN,Address,phone,email,BranchCode,Balance,AccountNumber\n");
     }
 
-    fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%s,%lu\n",
+    fprintf(file, "%s,%s,%s,%s,%s,%s,%s,%lu,%s\n",
             account->first_name,
             account->last_name,
             account->ssn,
@@ -54,40 +55,51 @@ int save_account_to_csv(const char *filename, const BankAccount *account) {
             account->phone,
             account->email,
             account->branch_code,
-            account->account_number,
-            account->balance);
-    fclose(file);
+            account->balance,
+            account->account_number);
 
+    fclose(file);
     return 0;
 }
 
 int get_account_by_account_number(const char *account_number, BankAccount *account) {
     FILE *file = fopen(CSV_FILE, "r");
-
     if (!file) return -1;
 
     BankAccount temp;
+    char line[1024];
+    while (fgets(line, sizeof(line), file))
+    {
+        BankAccount temp;
+        memset(&temp, 0, sizeof(temp));
 
-    while (fscanf(file, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu\n",
-                  temp.first_name,
-                  temp.last_name,
-                  temp.ssn,
-                  temp.address,
-                  temp.phone,
-                  temp.email,
-                  temp.branch_code,
-                  temp.account_number,
-                  &temp.balance) != EOF) {
+        // Remove newline
+        line[strcspn(line, "\r\n")] = '\0';
 
-        if (strcmp(temp.account_number, account_number) == 0) {
-            *account = temp;  // copy all fields to caller
+        int parsed = sscanf(line, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu,%[^,\n]",
+                            temp.first_name,
+                            temp.last_name,
+                            temp.ssn,
+                            temp.address,
+                            temp.phone,
+                            temp.email,
+                            temp.branch_code,
+                            &temp.balance,
+                            temp.account_number);
+
+        if (parsed != 9)
+        {
+            continue;
+        }
+
+        if (strcmp(temp.account_number, account_number) == 0)
+        {
+            *account = temp;
             fclose(file);
-            return 0; // Found
+            return 0;
         }
     }
-
-    fclose(file);
-    return -1; // Not found
+    return -1; // Account not found
 }
 
 int remove_account(const BankAccount *account) {
@@ -98,14 +110,12 @@ int remove_account(const BankAccount *account) {
     BankAccount current;
     int found = 0;
 
-    // ✅ Read the header line from the original file
     char header[512];
     if (fgets(header, sizeof(header), file)) {
-        fputs(header, temp);  // ✅ Write the same header to the temp file
+        fputs(header, temp); 
     }
 
-    // Now read and process the remaining data rows
-    while (fscanf(file, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu\n",
+    while (fscanf(file, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu,%[^,\n]\n",
                   current.first_name,
                   current.last_name,
                   current.ssn,
@@ -113,12 +123,11 @@ int remove_account(const BankAccount *account) {
                   current.phone,
                   current.email,
                   current.branch_code,
-                  current.account_number,
-                  &current.balance) != EOF) {
+                  &current.balance,
+                  current.account_number) != EOF) {
 
         if (strcmp(current.account_number, account->account_number) != 0) {
-            // Copy all fields to temp (preserve record)
-            fprintf(temp, "%s,%s,%s,%s,%s,%s,%s,%s,%lu\n",
+            fprintf(temp, "%s,%s,%s,%s,%s,%s,%s,%lu,%s\n",
                     current.first_name,
                     current.last_name,
                     current.ssn,
@@ -126,10 +135,10 @@ int remove_account(const BankAccount *account) {
                     current.phone,
                     current.email,
                     current.branch_code,
-                    current.account_number,
-                    current.balance);
+                    current.balance,
+                    current.account_number);
         } else {
-            found = 1; // This is the account we're deleting
+            found = 1;
         }
     }
 
