@@ -1,8 +1,7 @@
-// File: src/logic/update_account.c
-
 #include "update_account.h"
 #include "src/data/account_data.h"
 #include "src/presentation/user_interface.h"
+#include "src/logic/validations.h"
 #include <stdio.h>
 #include <string.h>
 
