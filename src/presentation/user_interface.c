@@ -3,42 +3,53 @@
 #include "src/logic/delete_account.h"
 #include "src/logic/update_account.h"
 #include "src/logic/bank_logic.h"
+#include "src/logic/validations.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-// Error display for file-related issues
-void open_file_error()
-{
-    printf("Error opening file.\n");
-}
-
 // Clear leftover input in buffer
-static void clear_input_buffer()
+void clear_input_buffer()
 {
     int c;
     while ((c = getchar()) != '\n' && c != EOF)
         ;
 }
 
-// Show menu to user and return selected option
+#include <stdio.h>
+
 int show_menu()
 {
     int choice;
+    
+    printf("    ______  ___   _   _  _   __      ___  ___  ___   _   _   ___  _____  ________  ___ _____ _   _ _____ \n");
+    printf("    | ___ \\/ _ \\ | \\ | || | / /      |  \\/  | / _ \\ | \\ | | / _ \\|  __ \\|  ___|  \\/  ||  ___| \\ | |_   _|\n");
+    printf("    | |_/ / /_\\ \\|  \\| || |/ /       | .  . |/ /_\\ \\|  \\| |/ /_\\ \\ |  \\/| |__ | .  . || |__ |  \\| | | |  \n");
+    printf("    | ___ \\  _  || . ` ||    \\       | |\\/| ||  _  || . ` ||  _  | | __ |  __|| |\\/| ||  __|| . ` | | |  \n");
+    printf("    | |_/ / | | || |\\  || |\\  \\      | |  | || | | || |\\  || | | | |_\\ \\| |___| |  | || |___| |\\  | | |  \n");
+    printf("    \\____/\\_| |_/\\_| \\_/\\_| \\_/      \\_|  |_/\\_| |_/\\_| \\_/\\_| |_/\\____/\\____/\\_|  |_/\\____/\\_| \\_/ \\_/  \n");
+    printf("                                                                                                     \n");
+    printf("                                                                                                     \n");
 
     printf("\n");
-    printf("+--------------------------------------+\n");
-    printf("|         BANK MANAGEMENT SYSTEM       |\n");
-    printf("+--------------------------------------+\n");
-    printf("|  1. Create New Bank Account          |\n");
-    printf("|  2. Delete Existing Account          |\n");
-    printf("|  3. Update Account Information       |\n");
-    printf("|  4. Deposit Funds                    |\n");
-    printf("|  5. Withdraw Funds                   |\n");
-    printf("|  9. Exit                             |\n");
-    printf("+--------------------------------------+\n");
+    printf("                        +========================================+\n");
+    printf("                        ||          BANK MAIN MENU              ||\n");
+    printf("                        +========================================+\n");
+    printf("                        ||  [1]     Create New Bank Account     ||\n");
+    printf("                        ||--------------------------------------||\n");
+    printf("                        ||  [2]     Delete Existing Account     ||\n");
+    printf("                        ||--------------------------------------||\n");
+    printf("                        ||  [3]     Update Account Information  ||\n");
+    printf("                        ||--------------------------------------||\n");
+    printf("                        ||  [4]     Deposit Funds               ||\n");
+    printf("                        ||--------------------------------------||\n");
+    printf("                        ||  [5]     Withdraw Funds              ||\n");
+    printf("                        ||--------------------------------------||\n");
+    printf("                        ||  [9]     Exit                        ||\n");
+    printf("                        +========================================+\n");
+    printf("\n");
+    printf("                        Enter your choice: ");
 
-    printf("Enter your choice: ");
 
     if (scanf("%d", &choice) != 1)
     {
@@ -52,38 +63,6 @@ int show_menu()
     return choice;
 }
 
-// Get string input from user and ensure it's not empty
-void get_nonempty_input(const char *prompt, char *buffer)
-{
-    while (1)
-    {
-        printf("%s", prompt);
-        if (fgets(buffer, 100, stdin) != NULL)
-        {
-            buffer[strcspn(buffer, "\n")] = '\0';
-            if (strlen(buffer) > 0)
-                break;
-        }
-        printf("Input must not be empty. Please try again.\n");
-    }
-}
-
-// Input with validation function
-void get_validated_input(const char *prompt, char *buffer, int size, int (*validate)(const char *), const char *error_msg)
-{
-    while (1)
-    {
-        printf("%s", prompt);
-        if (scanf("%s", buffer) == 1)
-        {
-            clear_input_buffer();
-            if (validate(buffer))
-                break;
-        }
-        printf("%s\n", error_msg);
-    }
-}
-
 // Print confirmation after account creation
 void print_account_confirmation(const BankAccount *account)
 {
@@ -93,6 +72,23 @@ void print_account_confirmation(const BankAccount *account)
     printf("Branch code: %s\n", account->branch_code);
     printf("Account balance: %lu\n", account->balance);
     printf("Account number: %s\n", account->account_number);
+}
+
+void create_account_ui()
+{
+    int result = create_account_logic();
+
+    switch (result)
+    {
+    case 0:
+        printf("Account successfully created.\n");
+        break;
+    case -1:
+        printf("Error saving account to file.\n");
+        break;
+    default:
+        printf("Unknown error occurred.\n");
+    }
 }
 
 // UI for deleting account
@@ -172,7 +168,7 @@ void transaction_ui(const char type)
 
     // Check that the amount is in whole cents and greater than 0
     // TODO
-    if (amount <= 0 || amount % 1 != 0)
+    if (amount <= 0)
     {
         printf("Invalid amount.\n");
         return;
@@ -200,4 +196,8 @@ void transaction_ui(const char type)
     default:
         printf("Unknown error occurred.\n");
     }
+}
+
+void print_message(const char *message) {
+    printf("%s\n", message);
 }

@@ -29,14 +29,15 @@ enable_testing()
 # Build the executable with all source files
 add_executable(BankApp     
                 src/main.c 
+                src/presentation/user_interface.c
+                src/data/account_data.c 
+                src/data/transactions_db.c
                 src/logic/controller.c
                 src/logic/delete_account.c
                 src/logic/create_account.c
                 src/logic/update_account.c
-                src/data/account_data.c 
-                src/presentation/user_interface.c
                 src/logic/bank_logic.c
-                src/data/transactions_db.c
+                src/logic/validations.c
 )
 
 #add_executable(AccountNumberTest

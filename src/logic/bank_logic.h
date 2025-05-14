@@ -2,6 +2,5 @@
 #define BANK_LOGIC_H
 
 int do_transaction(const char *account_number, const char *branch_code, int amount, const char type);
-int is_valid_account_number(const char *number);
 
 #endif

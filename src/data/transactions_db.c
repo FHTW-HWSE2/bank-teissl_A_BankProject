@@ -28,25 +28,3 @@ void store_transaction(const Transaction* txn) {
 
     fclose(file);
 }
-
-int get_latest_balance(const char* account_number) {
-    FILE* file = fopen(TRANSACTIONS_FILE, "r");
-    if (!file) return 0; // If no file, assume zero balance
-
-    char line[256];
-    fgets(line, sizeof(line), file); // skip header
-
-    int latest_balance = 0;
-    while (fgets(line, sizeof(line), file)) {
-        Transaction txn;
-        sscanf(line, "%[^,],%*[^,],%*d,%d,%*ld,%*s",
-               txn.account_number, &txn.balance_after);
-
-        if (strcmp(txn.account_number, account_number) == 0) {
-            latest_balance = txn.balance_after;
-        }
-    }
-
-    fclose(file);
-    return latest_balance;
-}

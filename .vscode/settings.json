@@ -14,6 +14,7 @@
         "delete_account.h": "c",
         "bank_logic.h": "c",
         "update_account.h": "c",
-        "withdrawal.h": "c"
+        "withdrawal.h": "c",
+        "validations.h": "c"
     }
 }

@@ -1,12 +1,12 @@
 #include "../data/account_data.h"
 #include "../data/transactions_db.h"
+#include "src/logic/validations.h"
 #include "bank_logic.h"
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
 
 #define ACCOUNT_CSV_PATH "../assets/accounts.csv"
-
 
 int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
     BankAccount account;
@@ -47,16 +47,4 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
     store_transaction(&txn);
 
     return 0;
-}
-
-int is_valid_account_number(const char *number)
-{
-    if (strlen(number) != 8)
-        return 0;
-    for (int i = 0; i < 8; i++)
-    {
-        if (!isdigit(number[i]))
-            return 0;
-    }
-    return 1;
 }

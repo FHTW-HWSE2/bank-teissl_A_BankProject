@@ -4,16 +4,12 @@
 #include "controller.h"
 
 // Core logic function to create and save an account
-void create_account_logic();
+int create_account_logic();
 
 // Allows UI input to fill in account fields
 void start_account_creation_ui(BankAccount *account);
 
 // Generates a unique 8-digit account number
 char* generate_unique_account_number(void);
-
-// Validation functions
-int is_valid_ssn(const char *ssn);
-int is_valid_branch_code(const char *branch_code);
 
 #endif

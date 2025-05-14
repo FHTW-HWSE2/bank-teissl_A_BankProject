@@ -15,6 +15,5 @@ typedef struct {
 
 // Function declarations
 void store_transaction(const Transaction* txn);
-int get_latest_balance(const char* account_number);
 
 #endif // TRANSACTIONS_DB_H
