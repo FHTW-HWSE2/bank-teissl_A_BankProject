@@ -16,7 +16,4 @@ int get_account_by_account_number(const char *account_number, BankAccount *accou
 
 int remove_account(const BankAccount *account);
 
-int update_account_balance(const char* account_number, int new_balance);
-
-
 #endif // ACCOUNT_DATA_H
