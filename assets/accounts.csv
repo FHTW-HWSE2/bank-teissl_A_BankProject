@@ -1,5 +1,4 @@
 FirstName,LastName,SSN,Address,phone,email,BranchCode,Balance,AccountNumber
-Jangin,Rasheed,1231231231,qwe,qwe,qwe,B2,50,00025799
-Bojan,Veljkovic,1234567890,Beogradaska 12,012335583,bojan@example.com,B1,995250,11111111
+Bojan,Veljkovic,1234567890,Beogradaska 12,012335583,bojan@example.com,B1,1050,11111111
+Jangin,Rasheed,1231231231,qwe,qwe,qwe,B2,2750,00025799
 Mhd,malaz,1231231231,qwe,123,a@g.com,B1,0,00003125
-asd,asd,3242342342,asd,123,qew@a.c,B1,0,00003210

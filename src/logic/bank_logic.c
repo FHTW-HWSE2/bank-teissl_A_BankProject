@@ -48,3 +48,60 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
 
     return 0;
 }
+
+int transfer_funds(const char* from_account, const char* to_account, int amount) {
+
+    BankAccount sender, receiver;
+
+    if (get_account_by_account_number(from_account, &sender) != 0) {
+        return -1;
+    }
+
+    if (get_account_by_account_number(to_account, &receiver) != 0) {
+        return -2;
+    }
+
+    if (amount > sender.balance) {
+        return -3;
+    }
+
+    // Withdraw from sender
+    sender.balance -= amount;
+    receiver.balance += amount;
+
+    if (remove_account(&sender) != 0) {
+        return -4;
+    }
+
+    if (save_account_to_csv(ACCOUNT_CSV_PATH, &sender) != 0) {
+        return -5;
+    }
+
+    if (remove_account(&receiver) != 0) {
+        return -6;
+    }
+    
+    if (save_account_to_csv(ACCOUNT_CSV_PATH, &receiver) != 0) {
+        return -7;
+    }
+
+    Transaction sender_txn;
+    strcpy(sender_txn.account_number, from_account);
+    strcpy(sender_txn.branch_code, sender.branch_code);
+    sender_txn.amount = -amount;
+    sender_txn.balance_after = sender.balance;
+    sender_txn.timestamp = time(NULL);
+    strcpy(sender_txn.type, "transfer-out");
+    store_transaction(&sender_txn);
+
+    Transaction receiver_txn;
+    strcpy(receiver_txn.account_number, to_account);
+    strcpy(receiver_txn.branch_code, receiver.branch_code);
+    receiver_txn.amount = amount;
+    receiver_txn.balance_after = receiver.balance;
+    receiver_txn.timestamp = time(NULL);
+    strcpy(receiver_txn.type, "transfer-in");
+    store_transaction(&receiver_txn);
+
+    return 0;
+}

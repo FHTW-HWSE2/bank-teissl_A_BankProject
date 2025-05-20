@@ -31,6 +31,7 @@ void start()
             transaction_ui('w'); // withdraw
             break;
         case 6:
+            transfer_ui();
             break;
         case 9:
             exit(0);
