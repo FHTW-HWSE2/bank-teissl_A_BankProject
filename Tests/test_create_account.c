@@ -1,52 +1,40 @@
-#include "unity/src/unity.h"
-#include "src/data/account_data.h"
-#include <stdio.h>
-#include <string.h>
+#include "unity.h"
 
-#define TEST_CSV "test_accounts_output.csv"
+#include "Mockaccount_data.h"
+#include "Mockuser_interface.h"
+#include "create_account.h"
 
-void setUp(void) {
-    // clear the file before each test
-    FILE *file = fopen(TEST_CSV, "w");
-    if (file) fclose(file);
-}
+void setUp(void) {}
+void tearDown(void) {}
 
-void tearDown(void) {
-    remove(TEST_CSV); // Optional: Delete after test if you want
-}
+void test_create_account_should_save_valid_account(void) {
+    BankAccount account;
 
-void test_save_account_to_csv_creates_file_and_writes_data(void) {
-    BankAccount account = {
-        .first_name = "John",
-        .last_name = "Doe",
-        .ssn = "123456789",
-        .address = "123 Main St",
-        .phone = "555-1234",
-        .email = "john@example.com",
-        .branch_code = "001",
-        .account_number = "98765432"
-    };
+    char fake_name[] = "Alice";
+    double fake_balance = 100.0;
+    char fake_account_number[] = "12345678";
 
-    save_account_to_csv(TEST_CSV, &account);
+    // Expectation for get_nonempty_input() – 3 arguments
+    get_nonempty_input_Expect("Enter full name: ", fake_name, 100);
+    
+    // Expectation for balance (returns double)
+    get_valid_balance_ExpectAndReturn("Enter initial balance: ", fake_balance, fake_balance);
 
-    FILE *file = fopen(TEST_CSV, "r");
-    TEST_ASSERT_NOT_NULL(file);
+    // Expectation for account number generation
+    generate_unique_account_number_ExpectAndReturn(fake_account_number);
 
-    char line[512];
-    int found_data = 0;
-    while (fgets(line, sizeof(line), file)) {
-        if (strstr(line, "John") && strstr(line, "Doe") && strstr(line, "98765432")) {
-            found_data = 1;
-            break;
-        }
-    }
+    // Save function call
+    save_account_to_csv_Expect("assets/accounts.csv", &account);
 
-    fclose(file);
-    TEST_ASSERT_TRUE(found_data);
+    // Final message
+    print_message_Expect("Account created successfully.");
+
+    // Call function under test
+    create_bank_account();
 }
 
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_save_account_to_csv_creates_file_and_writes_data);
+    RUN_TEST(test_create_account_should_save_valid_account);
     return UNITY_END();
 }

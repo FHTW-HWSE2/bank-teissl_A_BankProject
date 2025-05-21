@@ -16,6 +16,13 @@ cmake --build .
 ruby Tests/CMock/lib/cmock.rb src/data/account_data.h
 
 ```
+
+Remove-Item -Recurse -Force .\build
+cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Debug
+cmake --build build
+ctest -V
+
+
 ## Compile with GCC
 To manually compile the project using **GCC**, run:
 ```sh

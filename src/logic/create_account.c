@@ -1,11 +1,21 @@
+#include "unity.h"
+#include "account_data.h"
 #include "create_account.h"
-#include "src/data/account_data.h"
-#include "src/presentation/user_interface.h"
+#include "user_interface.h"
+
+#include "../mocks/Mockaccount_data.h"
+#include "Mockuser_interface.h"
+#include "Mockcreate_account.h"
+
+
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 #include <ctype.h>
+
+
+
 
 const char *filename = "../assets/accounts.csv";
 
@@ -19,11 +29,11 @@ void create_account_logic() {
 
 void start_account_creation_ui(BankAccount *account) {
 
-    get_nonempty_input("First name: ", account->first_name);
-    get_nonempty_input("Last name: ", account->last_name);
-    get_nonempty_input("Address: ", account->address);
-    get_nonempty_input("Phone: ", account->phone);
-    get_nonempty_input("Email: ", account->email);
+    get_nonempty_input("First name: ", account->first_name, MAX_STRING_LENGTH);
+    get_nonempty_input("Last name: ", account->last_name, MAX_STRING_LENGTH);
+    get_nonempty_input("Address: ", account->address, MAX_STRING_LENGTH);
+    get_nonempty_input("Phone: ", account->phone, MAX_STRING_LENGTH);
+    get_nonempty_input("Email: ", account->email, MAX_STRING_LENGTH);
 
     get_validated_input("SSN (10 digits): ", account->ssn, sizeof(account->ssn), is_valid_ssn, "Invalid SSN. Must be 10 digits.");
     get_validated_input("Branch code (B1/B2): ", account->branch_code, sizeof(account->branch_code), is_valid_branch_code, "Invalid branch code. Use 'B1' or 'B2'.");
@@ -36,7 +46,8 @@ char* generate_unique_account_number() {
 
     srand((unsigned int)time(NULL));
     do {
-        snprintf(account_number, sizeof(account_number), "%08d", rand() % 100000000);
+        snprintf(account_number, sizeof(account_number), "%08u", (unsigned)(rand() % 100000000));
+        // Ensure the account number is unique
     } while (strcmp(account_number, "00000000") == 0 || account_exists(filename, account_number));
     return account_number;
 }
@@ -53,4 +64,3 @@ int is_valid_ssn(const char *ssn) {
 int is_valid_branch_code(const char *branch_code) {
     return (strcmp(branch_code, "B1") == 0 || strcmp(branch_code, "B2") == 0);
 }
-

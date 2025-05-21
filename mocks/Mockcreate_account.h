@@ -31,12 +31,12 @@ void Mockcreate_account_Verify(void);
 #define create_account_logic_ExpectAndReturn(cmock_retval) TEST_FAIL_MESSAGE("create_account_logic requires _Expect (not AndReturn)");
 #define create_account_logic_Expect() create_account_logic_CMockExpect(__LINE__)
 void create_account_logic_CMockExpect(UNITY_LINE_TYPE cmock_line);
-#define start_account_creation_ui_ExpectAndReturn(account, cmock_retval) TEST_FAIL_MESSAGE("start_account_creation_ui requires _Expect (not AndReturn)");
-#define start_account_creation_ui_Expect(account) start_account_creation_ui_CMockExpect(__LINE__, account)
-void start_account_creation_ui_CMockExpect(UNITY_LINE_TYPE cmock_line, BankAccount* account);
 #define generate_unique_account_number_Expect() TEST_FAIL_MESSAGE("generate_unique_account_number requires _ExpectAndReturn");
 #define generate_unique_account_number_ExpectAndReturn(cmock_retval) generate_unique_account_number_CMockExpectAndReturn(__LINE__, cmock_retval)
 void generate_unique_account_number_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, char* cmock_to_return);
+#define start_account_creation_ui_ExpectAndReturn(account, cmock_retval) TEST_FAIL_MESSAGE("start_account_creation_ui requires _Expect (not AndReturn)");
+#define start_account_creation_ui_Expect(account) start_account_creation_ui_CMockExpect(__LINE__, account)
+void start_account_creation_ui_CMockExpect(UNITY_LINE_TYPE cmock_line, BankAccount* account);
 #define is_valid_ssn_Expect(ssn) TEST_FAIL_MESSAGE("is_valid_ssn requires _ExpectAndReturn");
 #define is_valid_ssn_ExpectAndReturn(ssn, cmock_retval) is_valid_ssn_CMockExpectAndReturn(__LINE__, ssn, cmock_retval)
 void is_valid_ssn_CMockExpectAndReturn(UNITY_LINE_TYPE cmock_line, const char* ssn, int cmock_to_return);

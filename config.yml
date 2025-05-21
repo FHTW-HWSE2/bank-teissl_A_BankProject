@@ -1,0 +1,11 @@
+:mock_prefix: Mock
+:mock_path: Tests/mocks
+:src_path: src
+:includes:
+  - stdio.h
+  - stdlib.h
+  - string.h
+:plugins:
+  - expect
+  - ignore
+  - callback

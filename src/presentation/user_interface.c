@@ -1,5 +1,5 @@
 #include "user_interface.h"
-#include "src/logic/create_account.h"
+#include "create_account.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -12,7 +12,7 @@ static void clear_input_buffer() {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void get_nonempty_input(const char *prompt, char *buffer) {
+void get_nonempty_input(const char *prompt, char *buffer,int length) {
     while (1) {
         printf("%s", prompt);
         if (fgets(buffer, 100, stdin) != NULL) {

@@ -1,6 +1,7 @@
 #include "account_data.h"
-#include "src/logic/create_account.h"
-#include "src/presentation/user_interface.h"
+#include "create_account.h"
+#include "user_interface.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

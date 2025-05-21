@@ -11,9 +11,9 @@
     [Released under MIT License. Please refer to license.txt for details]
 ========================================== */
 
-#include "cmock.h"
+#include "unity.h"
+#include "Mockcreate_account.h"
 
-/* public constants to be used by mocks */
 const char* CMockStringOutOfMemory = "CMock has run out of memory. Please allocate more.";
 const char* CMockStringCalledMore  = "Called more times than expected.";
 const char* CMockStringCalledLess  = "Called fewer times than expected.";
@@ -234,5 +234,15 @@ void CMock_Guts_MemFreeFinal(void)
     CMock_Guts_Buffer = NULL;
   }
 #endif
+}
+
+void setUp(void) {}
+void tearDown(void) {}
+
+void test_account_creation(void)
+{
+    create_account_ExpectAndReturn("user", "pass", 1);
+    int result = create_account("user", "pass");
+    TEST_ASSERT_EQUAL(1, result);
 }
 
