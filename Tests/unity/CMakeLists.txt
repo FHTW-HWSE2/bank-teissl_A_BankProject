@@ -3,6 +3,8 @@ project(BankProject C)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED True)
+add_definitions(-DCMOCK_MEM_SIZE=10240)
+
 
 # Include directories
 include_directories(
@@ -22,11 +24,15 @@ add_custom_target(GenerateMocks ALL
 
 
 # === Main Application ===
-add_executable(CreateAccountTestCmock
+file(GLOB MOCK_SOURCES "${PROJECT_SOURCE_DIR}/mocks/*.c")
+
+add_executable(CreateAccountTest
     ${MOCK_SOURCES}
-    Tests/unity/src/unity.c
+    Tests/unity/unity.c
+    CMock-master/src/cmock.c
     Tests/test_create_account.c
 )
+
 
 # === Test Target with Unity + CMock ===
 file(GLOB MOCK_SOURCES "${PROJECT_SOURCE_DIR}/mocks/*.c")

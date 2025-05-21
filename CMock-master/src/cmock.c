@@ -13,6 +13,37 @@
 
 #include "unity.h"
 #include "Mockcreate_account.h"
+#include <stdint.h>
+
+/* Macro to cast a pointer to an integer type for pointer arithmetic */
+#ifndef CMOCK_MEM_PTR_AS_INT
+#define CMOCK_MEM_PTR_AS_INT(type, ptr) ((type)(ptr))
+#endif
+
+/* Define CMOCK_MEM_INDEX_TYPE if not already defined */
+#ifndef CMOCK_MEM_INDEX_TYPE
+#define CMOCK_MEM_INDEX_TYPE unsigned int
+#endif
+
+#ifndef CMOCK_MEM_ALIGN_SIZE
+#define CMOCK_MEM_ALIGN_SIZE 8
+#endif
+
+#ifndef CMOCK_MEM_INDEX_SIZE
+#define CMOCK_MEM_INDEX_SIZE ((CMOCK_MEM_INDEX_TYPE)sizeof(CMOCK_MEM_INDEX_TYPE))
+#endif
+
+#ifndef CMOCK_MEM_ALIGN_MASK
+#define CMOCK_MEM_ALIGN_MASK (CMOCK_MEM_ALIGN_SIZE - 1)
+#endif
+
+#ifndef CMOCK_MEM_SIZE
+#define CMOCK_MEM_SIZE 1024
+#endif
+
+#ifndef CMOCK_GUTS_NONE
+#define CMOCK_GUTS_NONE 0
+#endif
 
 const char* CMockStringOutOfMemory = "CMock has run out of memory. Please allocate more.";
 const char* CMockStringCalledMore  = "Called more times than expected.";
@@ -33,7 +64,7 @@ static CMOCK_MEM_INDEX_TYPE   CMock_Guts_BufferSize = CMOCK_MEM_ALIGN_SIZE;
 static CMOCK_MEM_INDEX_TYPE   CMock_Guts_FreePtr = CMOCK_MEM_ALIGN_SIZE;
 #else
 static long long              CMock_Guts_Space[(CMOCK_MEM_SIZE + CMOCK_MEM_ALIGN_SIZE + sizeof(long long) - 1) / sizeof(long long)];
-static unsigned char*         CMock_Guts_Buffer = (unsigned char *)CMock_Guts_Space;
+static unsigned char*         CMock_Guts_Buffer = (unsigned char *)&CMock_Guts_Space;
 static CMOCK_MEM_INDEX_TYPE   CMock_Guts_BufferSize = CMOCK_MEM_SIZE + CMOCK_MEM_ALIGN_SIZE;//sizeof(CMock_Guts_Space);
 static CMOCK_MEM_INDEX_TYPE   CMock_Guts_FreePtr = CMOCK_MEM_ALIGN_SIZE;
 #endif
@@ -113,7 +144,7 @@ CMOCK_MEM_INDEX_TYPE CMock_Guts_MemChain(CMOCK_MEM_INDEX_TYPE root_index, CMOCK_
     /* find the end of the existing chain and add us */
     next = root;
     do {
-      index = *(CMOCK_MEM_INDEX_TYPE*)((CMOCK_MEM_PTR_AS_INT)next - CMOCK_MEM_INDEX_SIZE);
+      index = *(CMOCK_MEM_INDEX_TYPE*)(CMOCK_MEM_PTR_AS_INT(uintptr_t, next) - CMOCK_MEM_INDEX_SIZE);
       if (index >= CMock_Guts_FreePtr)
       {
         return CMOCK_GUTS_NONE;
@@ -123,7 +154,7 @@ CMOCK_MEM_INDEX_TYPE CMock_Guts_MemChain(CMOCK_MEM_INDEX_TYPE root_index, CMOCK_
         next = (void*)(&CMock_Guts_Buffer[index]);
       }
     } while (index > 0);
-    *(CMOCK_MEM_INDEX_TYPE*)((CMOCK_MEM_PTR_AS_INT)next - CMOCK_MEM_INDEX_SIZE) = (CMOCK_MEM_INDEX_TYPE)((CMOCK_MEM_PTR_AS_INT)obj - (CMOCK_MEM_PTR_AS_INT)CMock_Guts_Buffer);
+    *(CMOCK_MEM_INDEX_TYPE*)((uintptr_t)next - CMOCK_MEM_INDEX_SIZE) = (CMOCK_MEM_INDEX_TYPE)((uintptr_t)obj - (uintptr_t)CMock_Guts_Buffer);
     return root_index;
   }
 }
@@ -145,7 +176,7 @@ CMOCK_MEM_INDEX_TYPE CMock_Guts_MemNext(CMOCK_MEM_INDEX_TYPE previous_item_index
 
   /* if the pointer is good, then use it to look up the next index
    * (we know the first element always goes in zero, so NEXT must always be > 1) */
-  index = *(CMOCK_MEM_INDEX_TYPE*)((CMOCK_MEM_PTR_AS_INT)previous_item - CMOCK_MEM_INDEX_SIZE);
+  index = *(CMOCK_MEM_INDEX_TYPE*)((uintptr_t)previous_item - CMOCK_MEM_INDEX_SIZE);
   if ((index > 1) && (index < CMock_Guts_FreePtr))
   {
     return index;
@@ -236,13 +267,7 @@ void CMock_Guts_MemFreeFinal(void)
 #endif
 }
 
-void setUp(void) {}
-void tearDown(void) {}
 
-void test_account_creation(void)
-{
-    create_account_ExpectAndReturn("user", "pass", 1);
-    int result = create_account("user", "pass");
-    TEST_ASSERT_EQUAL(1, result);
-}
+
+
 
