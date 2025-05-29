@@ -1,4 +1,11 @@
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/coverage.dir
 C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/BankApp.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test_validations.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test_account_data.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test_account_number.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test_create_account.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test_simple.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test_transactions_db.dir
 C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/test.dir
 C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/CMakeFiles/rebuild_cache.dir

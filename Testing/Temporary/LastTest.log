@@ -1,0 +1,19 @@
+Start testing: May 29 20:05 Mitteleuropäische Sommerzeit
+----------------------------------------------------------
+Unable to find executable: C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/test_delete_account.exe
+1/1 Testing: DeleteAccountTest
+1/1 Test: DeleteAccountTest
+Command: ""
+Directory: C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject
+"DeleteAccountTest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"DeleteAccountTest" end time: May 29 20:05 Mitteleuropäische Sommerzeit
+"DeleteAccountTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 29 20:05 Mitteleuropäische Sommerzeit

@@ -1,3 +1,23 @@
-Start testing: May 11 00:31 Mitteleuropäische Sommerzeit
+Start testing: May 29 21:21 Mitteleuropäische Sommerzeit
 ----------------------------------------------------------
-End testing: May 11 00:31 Mitteleuropäische Sommerzeit
+6/6 Testing: TransactionsDBTest
+6/6 Test: TransactionsDBTest
+Command: "C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug/test_transactions_db.exe"
+Directory: C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/cmake-build-debug
+"TransactionsDBTest" start time: May 29 21:21 Mitteleuropäische Sommerzeit
+Output:
+----------------------------------------------------------
+C:\Users\bojan\CLionProjects\bank-teissl_A_BankProject\Tests\test_transactions_db.c:50:test_store_transaction_creates_file_and_writes_data:FAIL: Expected TRUE Was FALSE
+
+-----------------------
+1 Tests 1 Failures 0 Ignored 
+FAIL
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Failed.
+"TransactionsDBTest" end time: May 29 21:21 Mitteleuropäische Sommerzeit
+"TransactionsDBTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 29 21:21 Mitteleuropäische Sommerzeit

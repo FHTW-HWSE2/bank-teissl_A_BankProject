@@ -1,0 +1,6 @@
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/CMakeFiles/coverage.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/CMakeFiles/BankApp.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/CMakeFiles/test_delete_account.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/CMakeFiles/test.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/CMakeFiles/edit_cache.dir
+C:/Users/bojan/CLionProjects/bank-teissl_A_BankProject/CMakeFiles/rebuild_cache.dir
