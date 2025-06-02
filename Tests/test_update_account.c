@@ -59,7 +59,7 @@ void test_update_nonexistent_account(void) {
     };
 
     int result = update_account(TEST_FILE, &updated);
-    TEST_ASSERT_EQUAL_INT(0, result);  // Pretpostavljamo da vraca 0 ako nalog ne postoji
+    TEST_ASSERT_EQUAL_INT(0, result);  
 }
 
 void test_update_with_invalid_file(void) {
@@ -70,7 +70,7 @@ void test_update_with_invalid_file(void) {
     };
 
     int result = update_account("non_existing_file.csv", &dummy);
-    TEST_ASSERT_EQUAL_INT(-1, result);  // Pretpostavljamo -1 kod greške
+    TEST_ASSERT_EQUAL_INT(-1, result); 
 }
 
 int main(void) {
