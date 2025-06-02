@@ -39,7 +39,6 @@ target_include_directories(BankApp PRIVATE ./src)
 
 enable_testing()
 
-# ✅ Test: validations
 add_executable(test_validations
         Tests/test_validations.c
         Tests/unity/unity.c
@@ -53,9 +52,8 @@ add_executable(test_validations
         src/data/transactions_db.c
 )
 target_include_directories(test_validations PRIVATE ./src ./Tests)
-add_test(NAME ValidationsTest COMMAND test_validations)
+add_test(NAME test_validations COMMAND test_validations)
 
-# ✅ Test: account_data
 add_executable(test_account_data
         Tests/test_account_data.c
         Tests/unity/unity.c
@@ -69,9 +67,8 @@ add_executable(test_account_data
         src/data/transactions_db.c
 )
 target_include_directories(test_account_data PRIVATE ./src ./Tests)
-add_test(NAME AccountDataTest COMMAND test_account_data)
+add_test(NAME test_account_data COMMAND test_account_data)
 
-# ✅ Test: account_number
 add_executable(test_account_number
         Tests/test_account_number.c
         Tests/unity/unity.c
@@ -85,9 +82,8 @@ add_executable(test_account_number
         src/data/transactions_db.c
 )
 target_include_directories(test_account_number PRIVATE ./src ./Tests)
-add_test(NAME AccountNumberTest COMMAND test_account_number)
+add_test(NAME test_account_number COMMAND test_account_number)
 
-# ✅ Test: create_account
 add_executable(test_create_account
         Tests/test_create_account.c
         Tests/unity/unity.c
@@ -101,17 +97,15 @@ add_executable(test_create_account
         src/data/transactions_db.c
 )
 target_include_directories(test_create_account PRIVATE ./src ./Tests)
-add_test(NAME CreateAccountTest COMMAND test_create_account)
+add_test(NAME test_create_account COMMAND test_create_account)
 
-# ✅ Test: simple
 add_executable(test_simple
         Tests/test_simple.c
         Tests/unity/unity.c
 )
 target_include_directories(test_simple PRIVATE ./src ./Tests)
-add_test(NAME SimpleTest COMMAND test_simple)
+add_test(NAME test_simple COMMAND test_simple)
 
-# ✅ Test: transactions_db
 add_executable(test_transactions_db
         Tests/test_transactions_db.c
         Tests/unity/unity.c
@@ -125,9 +119,8 @@ add_executable(test_transactions_db
         src/data/account_data.c
 )
 target_include_directories(test_transactions_db PRIVATE ./src ./Tests)
-add_test(NAME TransactionsDBTest COMMAND test_transactions_db)
+add_test(NAME test_transactions_db COMMAND test_transactions_db)
 
-# ✅ Test: update_account
 add_executable(test_update_account
         Tests/test_update_account.c
         Tests/unity/unity.c
@@ -141,20 +134,19 @@ add_executable(test_update_account
         src/data/transactions_db.c
 )
 target_include_directories(test_update_account PRIVATE ./src ./Tests)
-add_test(NAME UpdateAccountTest COMMAND test_update_account)
+add_test(NAME test_update_account COMMAND test_update_account)
 
-# ✅ Test: delete_account
 add_executable(test_delete_account
         Tests/test_delete_account.c
         Tests/unity/unity.c
         src/logic/delete_account.c
         src/data/account_data.c
-        src/logic/create_account.c
+        src/presentation/user_interface.c
         src/logic/update_account.c
+        src/logic/create_account.c
         src/logic/validations.c
         src/logic/bank_logic.c
-        src/presentation/user_interface.c
         src/data/transactions_db.c
 )
 target_include_directories(test_delete_account PRIVATE ./src ./Tests)
-add_test(NAME DeleteAccountTest COMMAND test_delete_account)
+add_test(NAME test_delete_account COMMAND test_delete_account)
