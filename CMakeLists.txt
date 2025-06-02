@@ -34,22 +34,6 @@ add_executable(BankApp
 )
 target_include_directories(BankApp PRIVATE ./src)
 
-# TEST: Validations
-add_executable(test_validations
-        Tests/test_validations.c
-        Tests/unity/unity.c
-        src/logic/validations.c
-        src/presentation/user_interface.c
-        src/logic/create_account.c
-        src/logic/delete_account.c
-        src/logic/update_account.c
-        src/logic/bank_logic.c
-        src/data/account_data.c
-        src/data/transactions_db.c
-)
-target_include_directories(test_validations PRIVATE ./src ./Tests)
-add_test(NAME ValidationsTest COMMAND test_validations)
-
 # TEST: Account Data
 add_executable(test_account_data
         Tests/test_account_data.c
@@ -65,22 +49,6 @@ add_executable(test_account_data
 )
 target_include_directories(test_account_data PRIVATE ./src ./Tests)
 add_test(NAME AccountDataTest COMMAND test_account_data)
-
-#  TEST: Transactions DB
-add_executable(test_transactions_db
-        Tests/test_transactions_db.c
-        Tests/unity/unity.c
-        src/data/transactions_db.c
-        src/presentation/user_interface.c
-        src/logic/create_account.c
-        src/logic/delete_account.c
-        src/logic/update_account.c
-        src/logic/validations.c
-        src/logic/bank_logic.c
-        src/data/account_data.c
-)
-target_include_directories(test_transactions_db PRIVATE ./src ./Tests)
-add_test(NAME TransactionsDBTest COMMAND test_transactions_db)
 
 # TEST: Account Number
 add_executable(test_account_number

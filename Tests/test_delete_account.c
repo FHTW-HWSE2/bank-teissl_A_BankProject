@@ -1,4 +1,4 @@
-#include "unity/src/unity.h"
+#include "unity/unity.h"
 #include "src/logic/delete_account.h"
 #include <stdio.h>
 #include <string.h>
