@@ -50,7 +50,7 @@ void test_delete_nonexistent_account(void) {
 
 void test_delete_with_invalid_file(void) {
     int result = delete_account("non_existing_file.csv", "12345678");
-    TEST_ASSERT_EQUAL_INT(-1, result);  // Pretpostavljamo da vraća -1 kod greške
+    TEST_ASSERT_EQUAL_INT(-1, result);  
 }
 
 int main(void) {
