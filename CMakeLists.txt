@@ -19,7 +19,7 @@ add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
 enable_testing()
 
-# 🔒 Glavna aplikacija – ne diraš!
+
 add_executable(BankApp
         src/main.c
         src/presentation/user_interface.c
@@ -34,7 +34,7 @@ add_executable(BankApp
 )
 target_include_directories(BankApp PRIVATE ./src)
 
-# ✅ TEST: Validations
+# TEST: Validations
 add_executable(test_validations
         Tests/test_validations.c
         Tests/unity/unity.c
@@ -50,7 +50,7 @@ add_executable(test_validations
 target_include_directories(test_validations PRIVATE ./src ./Tests)
 add_test(NAME ValidationsTest COMMAND test_validations)
 
-# ✅ TEST: Account Data
+# TEST: Account Data
 add_executable(test_account_data
         Tests/test_account_data.c
         Tests/unity/unity.c
@@ -66,7 +66,7 @@ add_executable(test_account_data
 target_include_directories(test_account_data PRIVATE ./src ./Tests)
 add_test(NAME AccountDataTest COMMAND test_account_data)
 
-# ✅ TEST: Transactions DB
+#  TEST: Transactions DB
 add_executable(test_transactions_db
         Tests/test_transactions_db.c
         Tests/unity/unity.c
@@ -82,7 +82,7 @@ add_executable(test_transactions_db
 target_include_directories(test_transactions_db PRIVATE ./src ./Tests)
 add_test(NAME TransactionsDBTest COMMAND test_transactions_db)
 
-# ✅ TEST: Account Number
+# TEST: Account Number
 add_executable(test_account_number
         Tests/test_account_number.c
         Tests/unity/unity.c
@@ -98,7 +98,7 @@ add_executable(test_account_number
 target_include_directories(test_account_number PRIVATE ./src ./Tests)
 add_test(NAME AccountNumberTest COMMAND test_account_number)
 
-# ✅ TEST: Create Account
+# TEST: Create Account
 add_executable(test_create_account
         Tests/test_create_account.c
         Tests/unity/unity.c
@@ -114,7 +114,7 @@ add_executable(test_create_account
 target_include_directories(test_create_account PRIVATE ./src ./Tests)
 add_test(NAME CreateAccountTest COMMAND test_create_account)
 
-# ✅ TEST: Simple
+# TEST: Simple
 add_executable(test_simple
         Tests/test_simple.c
         Tests/unity/unity.c
