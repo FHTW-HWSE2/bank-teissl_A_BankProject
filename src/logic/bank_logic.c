@@ -5,33 +5,44 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <time.h>  // For time()
 
-#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
+#define ACCOUNT_CSV_PATH "assets/accounts.csv"
 
 int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
     BankAccount account;
 
+    // Find the account
     if (get_account_by_account_number(account_number, &account) != 0)
-        return -1;
+        return -1; // Account not found
 
+    // Validate branch code match (optional, can remove if not needed)
+    if (strcmp(account.branch_code, branch_code) != 0) {
+        return -1; // Branch code mismatch
+    }
+
+    // Process the transaction
     if (type == 'w') {
         if (account.balance < amount) {
             return -2; // Insufficient funds
         }
         account.balance -= amount;
-    } else if (type == 'd')  // Invalid transaction type
-    {
+    } else if (type == 'd') {
         account.balance += amount;
+    } else {
+        return -3; // Invalid transaction type
     }
 
+    // Remove old account and save updated
     if (remove_account(&account) != 0) {
-        return -3;
-    }
-    
-    if (save_account_to_csv(ACCOUNT_CSV_PATH, &account) != 0) {
-        return -4;
+        return -3; // Error removing old account
     }
 
+    if (save_account_to_csv(ACCOUNT_CSV_PATH, &account) != 0) {
+        return -4; // Error saving updated account
+    }
+
+    // Record the transaction in transactions.csv
     Transaction txn;
     strcpy(txn.account_number, account_number);
     strcpy(txn.branch_code, branch_code);
@@ -43,32 +54,32 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
         strcpy(txn.type, "deposit");
     else if (type == 'w')
         strcpy(txn.type, "withdraw");
-    
+
     store_transaction(&txn);
 
-    return 0;
+    return 0; // Success
 }
 
 int transfer_funds(const char* from_account, const char* to_account, int amount) {
-
     BankAccount sender, receiver;
 
     if (get_account_by_account_number(from_account, &sender) != 0) {
-        return -1;
+        return -1; // Sender not found
     }
 
     if (get_account_by_account_number(to_account, &receiver) != 0) {
-        return -2;
+        return -2; // Receiver not found
     }
 
     if (amount > sender.balance) {
-        return -3;
+        return -3; // Insufficient funds
     }
 
-    // Withdraw from sender
+    // Update balances
     sender.balance -= amount;
     receiver.balance += amount;
 
+    // Remove old sender and receiver records
     if (remove_account(&sender) != 0) {
         return -4;
     }
@@ -80,11 +91,12 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     if (remove_account(&receiver) != 0) {
         return -6;
     }
-    
+
     if (save_account_to_csv(ACCOUNT_CSV_PATH, &receiver) != 0) {
         return -7;
     }
 
+    // Record transactions
     Transaction sender_txn;
     strcpy(sender_txn.account_number, from_account);
     strcpy(sender_txn.branch_code, sender.branch_code);
@@ -103,5 +115,5 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     strcpy(receiver_txn.type, "transfer-in");
     store_transaction(&receiver_txn);
 
-    return 0;
+    return 0; // Success
 }

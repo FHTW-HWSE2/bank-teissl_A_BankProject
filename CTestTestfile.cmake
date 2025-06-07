@@ -5,10 +5,10 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 add_test(AccountDataTest "C:/bank-teissl_A_BankProject/test_account_data.exe")
-set_tests_properties(AccountDataTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;54;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
+set_tests_properties(AccountDataTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;63;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
 add_test(AccountNumberTest "C:/bank-teissl_A_BankProject/test_account_number.exe")
-set_tests_properties(AccountNumberTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;70;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
+set_tests_properties(AccountNumberTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;79;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
 add_test(CreateAccountTest "C:/bank-teissl_A_BankProject/test_create_account.exe")
-set_tests_properties(CreateAccountTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;86;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
+set_tests_properties(CreateAccountTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;95;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
 add_test(SimpleTest "C:/bank-teissl_A_BankProject/test_simple.exe")
-set_tests_properties(SimpleTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;94;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")
+set_tests_properties(SimpleTest PROPERTIES  _BACKTRACE_TRIPLES "C:/bank-teissl_A_BankProject/CMakeLists.txt;103;add_test;C:/bank-teissl_A_BankProject/CMakeLists.txt;0;")

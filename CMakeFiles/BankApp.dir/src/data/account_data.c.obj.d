@@ -25,4 +25,9 @@ CMakeFiles/BankApp.dir/src/data/account_data.c.obj: \
  C:/msys64/ucrt64/include/malloc.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/mm_malloc.h \
  C:/msys64/ucrt64/include/errno.h C:/msys64/ucrt64/include/string.h \
- C:/msys64/ucrt64/include/sec_api/string_s.h
+ C:/msys64/ucrt64/include/sec_api/string_s.h \
+ C:/msys64/ucrt64/include/unistd.h C:/msys64/ucrt64/include/io.h \
+ C:/msys64/ucrt64/include/process.h \
+ C:/msys64/ucrt64/include/corecrt_startup.h \
+ C:/msys64/ucrt64/include/sys/types.h C:/msys64/ucrt64/include/getopt.h \
+ C:/msys64/ucrt64/include/pthread_unistd.h
