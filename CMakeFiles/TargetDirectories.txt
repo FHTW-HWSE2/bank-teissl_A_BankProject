@@ -1,0 +1,9 @@
+C:/bank-teissl_A_BankProject/CMakeFiles/coverage.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/BankApp.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/test_account_data.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/test_account_number.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/test_create_account.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/test_simple.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/test.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/edit_cache.dir
+C:/bank-teissl_A_BankProject/CMakeFiles/rebuild_cache.dir

@@ -33,6 +33,9 @@ void start()
         case 6:
             transfer_ui();
             break;
+         case 7:
+            request_financial_report();
+            break;
         case 9:
             exit(0);
             break;

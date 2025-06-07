@@ -19,18 +19,21 @@ add_compile_options(-Wall -Wextra -pedantic -Wno-unused-parameter)
 
 enable_testing()
 
-
+# Main Bank App
 add_executable(BankApp
         src/main.c
         src/presentation/user_interface.c
+        src/presentation/report_ui.c             # Added reporting UI
         src/data/account_data.c
         src/data/transactions_db.c
+        src/data/report_data.c                   # Added reporting data
         src/logic/controller.c
         src/logic/delete_account.c
         src/logic/create_account.c
         src/logic/update_account.c
         src/logic/bank_logic.c
         src/logic/validations.c
+        src/logic/report_logic.c                 # Added reporting logic
 )
 target_include_directories(BankApp PRIVATE ./src)
 
