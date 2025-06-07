@@ -3,3 +3,16 @@ Name: Bojan Veljkovic, SSN: 1234567890, Email: bojan@example.com
 Name: Jangin Rasheed, SSN: 1231231231, Email: qwe
 Name: Mhd malaz, SSN: 1231231231, Email: a@g.com
 
+=== total_money Report ===
+Total Money in Bank: 0.00
+
+=== active_accounts Report ===
+Number of Active Accounts: 3
+
+=== account_details Report ===
+Detailed Account Information:
+Name: Bojan Veljkovic, SSN: 1234567890, Email: bojan@example.com
+Name: Jangin Rasheed, SSN: 1231231231, Email: qwe
+Name: Mhd malaz, SSN: 1231231231, Email: a@g.com
+
+
