@@ -59,17 +59,19 @@ int fetch_report_data(const char *parameters, Report *report) {
         return 1;
 
     } else if (strcmp(parameters, "account_details") == 0) {
-        strcpy(report->data, "Detailed Account Information:\n");
-        for (int i = 0; i < count; i++) {
-            char line[256];
-            snprintf(line, sizeof(line),
-                     "Name: %s %s, SSN: %s, Email: %s\n",
-                     accounts[i].first_name, accounts[i].last_name,
-                     accounts[i].ssn, accounts[i].email);
-            strcat(report->data, line);
-        }
-        return 1;
+    strcpy(report->data, "Detailed Account Information:\n");
+    for (int i = 0; i < count; i++) {
+        char line[256];
+        snprintf(line, sizeof(line),
+                 "Name: %s %s, SSN: %s, Email: %s, Branch: %s\n",
+                 accounts[i].first_name, accounts[i].last_name,
+                 accounts[i].ssn, accounts[i].email,
+                 accounts[i].branch_code);
+        strcat(report->data, line);
     }
+    return 1;
+}
+
 
     strcpy(report->data, "Invalid report type");
     return 0;
