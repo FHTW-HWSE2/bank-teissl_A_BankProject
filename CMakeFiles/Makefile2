@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = C:\bank-teissl_A_BankProject
 all: CMakeFiles/BankApp.dir/all
 all: CMakeFiles/test_account_data.dir/all
 all: CMakeFiles/test_account_number.dir/all
+all: CMakeFiles/test_report_logic.dir/all
 all: CMakeFiles/test_create_account.dir/all
 all: CMakeFiles/test_simple.dir/all
 .PHONY : all
@@ -73,6 +74,7 @@ all: CMakeFiles/test_simple.dir/all
 codegen: CMakeFiles/BankApp.dir/codegen
 codegen: CMakeFiles/test_account_data.dir/codegen
 codegen: CMakeFiles/test_account_number.dir/codegen
+codegen: CMakeFiles/test_report_logic.dir/codegen
 codegen: CMakeFiles/test_create_account.dir/codegen
 codegen: CMakeFiles/test_simple.dir/codegen
 .PHONY : codegen
@@ -86,6 +88,7 @@ clean: CMakeFiles/coverage.dir/clean
 clean: CMakeFiles/BankApp.dir/clean
 clean: CMakeFiles/test_account_data.dir/clean
 clean: CMakeFiles/test_account_number.dir/clean
+clean: CMakeFiles/test_report_logic.dir/clean
 clean: CMakeFiles/test_create_account.dir/clean
 clean: CMakeFiles/test_simple.dir/clean
 .PHONY : clean
@@ -219,6 +222,38 @@ CMakeFiles/test_account_number.dir/clean:
 .PHONY : CMakeFiles/test_account_number.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/test_report_logic.dir
+
+# All Build rule for target.
+CMakeFiles/test_report_logic.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\bank-teissl_A_BankProject\CMakeFiles --progress-num=48,49,50,51 "Built target test_report_logic"
+.PHONY : CMakeFiles/test_report_logic.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_report_logic.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\bank-teissl_A_BankProject\CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/test_report_logic.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\bank-teissl_A_BankProject\CMakeFiles 0
+.PHONY : CMakeFiles/test_report_logic.dir/rule
+
+# Convenience name for target.
+test_report_logic: CMakeFiles/test_report_logic.dir/rule
+.PHONY : test_report_logic
+
+# codegen rule for target.
+CMakeFiles/test_report_logic.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\bank-teissl_A_BankProject\CMakeFiles --progress-num=48,49,50,51 "Finished codegen for target test_report_logic"
+.PHONY : CMakeFiles/test_report_logic.dir/codegen
+
+# clean rule for target.
+CMakeFiles/test_report_logic.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/clean
+.PHONY : CMakeFiles/test_report_logic.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_create_account.dir
 
 # All Build rule for target.
@@ -257,7 +292,7 @@ CMakeFiles/test_create_account.dir/clean:
 CMakeFiles/test_simple.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_simple.dir\build.make CMakeFiles/test_simple.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_simple.dir\build.make CMakeFiles/test_simple.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\bank-teissl_A_BankProject\CMakeFiles --progress-num=48,49,50 "Built target test_simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\bank-teissl_A_BankProject\CMakeFiles --progress-num=52,53,54 "Built target test_simple"
 .PHONY : CMakeFiles/test_simple.dir/all
 
 # Build rule for subdir invocation for target.
@@ -274,7 +309,7 @@ test_simple: CMakeFiles/test_simple.dir/rule
 # codegen rule for target.
 CMakeFiles/test_simple.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_simple.dir\build.make CMakeFiles/test_simple.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\bank-teissl_A_BankProject\CMakeFiles --progress-num=48,49,50 "Finished codegen for target test_simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\bank-teissl_A_BankProject\CMakeFiles --progress-num=52,53,54 "Finished codegen for target test_simple"
 .PHONY : CMakeFiles/test_simple.dir/codegen
 
 # clean rule for target.

@@ -78,6 +78,17 @@ add_executable(test_account_number
 target_include_directories(test_account_number PRIVATE ./src ./Tests)
 add_test(NAME AccountNumberTest COMMAND test_account_number)
 
+
+# TEST: Report Logic
+add_executable(test_report_logic
+    Tests/test_report_logic.c
+    Tests/unity/unity.c
+    src/data/report_data.c
+)
+target_include_directories(test_report_logic PRIVATE ./src ./Tests)
+add_test(NAME ReportLogicTest COMMAND test_report_logic)
+
+
 # TEST: Create Account
 add_executable(test_create_account
     Tests/test_create_account.c

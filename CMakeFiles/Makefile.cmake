@@ -55,6 +55,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/BankApp.dir/DependInfo.cmake"
   "CMakeFiles/test_account_data.dir/DependInfo.cmake"
   "CMakeFiles/test_account_number.dir/DependInfo.cmake"
+  "CMakeFiles/test_report_logic.dir/DependInfo.cmake"
   "CMakeFiles/test_create_account.dir/DependInfo.cmake"
   "CMakeFiles/test_simple.dir/DependInfo.cmake"
   )

@@ -178,6 +178,19 @@ test_account_number/fast:
 .PHONY : test_account_number/fast
 
 #=============================================================================
+# Target rules for targets named test_report_logic
+
+# Build rule for target.
+test_report_logic: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 test_report_logic
+.PHONY : test_report_logic
+
+# fast build rule for target.
+test_report_logic/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/build
+.PHONY : test_report_logic/fast
+
+#=============================================================================
 # Target rules for targets named test_create_account
 
 # Build rule for target.
@@ -275,6 +288,30 @@ Tests/test_create_account.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_create_account.dir\build.make CMakeFiles/test_create_account.dir/Tests/test_create_account.c.s
 .PHONY : Tests/test_create_account.c.s
 
+Tests/test_report_logic.obj: Tests/test_report_logic.c.obj
+.PHONY : Tests/test_report_logic.obj
+
+# target to build an object file
+Tests/test_report_logic.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/Tests/test_report_logic.c.obj
+.PHONY : Tests/test_report_logic.c.obj
+
+Tests/test_report_logic.i: Tests/test_report_logic.c.i
+.PHONY : Tests/test_report_logic.i
+
+# target to preprocess a source file
+Tests/test_report_logic.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/Tests/test_report_logic.c.i
+.PHONY : Tests/test_report_logic.c.i
+
+Tests/test_report_logic.s: Tests/test_report_logic.c.s
+.PHONY : Tests/test_report_logic.s
+
+# target to generate assembly for a file
+Tests/test_report_logic.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/Tests/test_report_logic.c.s
+.PHONY : Tests/test_report_logic.c.s
+
 Tests/test_simple.obj: Tests/test_simple.c.obj
 .PHONY : Tests/test_simple.obj
 
@@ -306,6 +343,7 @@ Tests/unity/unity.obj: Tests/unity/unity.c.obj
 Tests/unity/unity.c.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_account_data.dir\build.make CMakeFiles/test_account_data.dir/Tests/unity/unity.c.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_account_number.dir\build.make CMakeFiles/test_account_number.dir/Tests/unity/unity.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/Tests/unity/unity.c.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_create_account.dir\build.make CMakeFiles/test_create_account.dir/Tests/unity/unity.c.obj
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_simple.dir\build.make CMakeFiles/test_simple.dir/Tests/unity/unity.c.obj
 .PHONY : Tests/unity/unity.c.obj
@@ -317,6 +355,7 @@ Tests/unity/unity.i: Tests/unity/unity.c.i
 Tests/unity/unity.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_account_data.dir\build.make CMakeFiles/test_account_data.dir/Tests/unity/unity.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_account_number.dir\build.make CMakeFiles/test_account_number.dir/Tests/unity/unity.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/Tests/unity/unity.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_create_account.dir\build.make CMakeFiles/test_create_account.dir/Tests/unity/unity.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_simple.dir\build.make CMakeFiles/test_simple.dir/Tests/unity/unity.c.i
 .PHONY : Tests/unity/unity.c.i
@@ -328,6 +367,7 @@ Tests/unity/unity.s: Tests/unity/unity.c.s
 Tests/unity/unity.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_account_data.dir\build.make CMakeFiles/test_account_data.dir/Tests/unity/unity.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_account_number.dir\build.make CMakeFiles/test_account_number.dir/Tests/unity/unity.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/Tests/unity/unity.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_create_account.dir\build.make CMakeFiles/test_create_account.dir/Tests/unity/unity.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_simple.dir\build.make CMakeFiles/test_simple.dir/Tests/unity/unity.c.s
 .PHONY : Tests/unity/unity.c.s
@@ -371,6 +411,7 @@ src/data/report_data.obj: src/data/report_data.c.obj
 # target to build an object file
 src/data/report_data.c.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\BankApp.dir\build.make CMakeFiles/BankApp.dir/src/data/report_data.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/src/data/report_data.c.obj
 .PHONY : src/data/report_data.c.obj
 
 src/data/report_data.i: src/data/report_data.c.i
@@ -379,6 +420,7 @@ src/data/report_data.i: src/data/report_data.c.i
 # target to preprocess a source file
 src/data/report_data.c.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\BankApp.dir\build.make CMakeFiles/BankApp.dir/src/data/report_data.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/src/data/report_data.c.i
 .PHONY : src/data/report_data.c.i
 
 src/data/report_data.s: src/data/report_data.c.s
@@ -387,6 +429,7 @@ src/data/report_data.s: src/data/report_data.c.s
 # target to generate assembly for a file
 src/data/report_data.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\BankApp.dir\build.make CMakeFiles/BankApp.dir/src/data/report_data.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_report_logic.dir\build.make CMakeFiles/test_report_logic.dir/src/data/report_data.c.s
 .PHONY : src/data/report_data.c.s
 
 src/data/transactions_db.obj: src/data/transactions_db.c.obj
@@ -730,6 +773,7 @@ help:
 	@echo ... test_account_data
 	@echo ... test_account_number
 	@echo ... test_create_account
+	@echo ... test_report_logic
 	@echo ... test_simple
 	@echo ... Tests/test_account_data.obj
 	@echo ... Tests/test_account_data.i
@@ -740,6 +784,9 @@ help:
 	@echo ... Tests/test_create_account.obj
 	@echo ... Tests/test_create_account.i
 	@echo ... Tests/test_create_account.s
+	@echo ... Tests/test_report_logic.obj
+	@echo ... Tests/test_report_logic.i
+	@echo ... Tests/test_report_logic.s
 	@echo ... Tests/test_simple.obj
 	@echo ... Tests/test_simple.i
 	@echo ... Tests/test_simple.s

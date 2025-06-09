@@ -2,8 +2,6 @@
 #include <string.h>
 #include "report_data.h"
 
-
-
 // Helper: Read account data
 int read_accounts_csv(Account accounts[], int max_accounts) {
     FILE *file = fopen("assets/accounts.csv", "r");
@@ -19,7 +17,7 @@ int read_accounts_csv(Account accounts[], int max_accounts) {
     fgets(line, sizeof(line), file);
 
     while (fgets(line, sizeof(line), file) && count < max_accounts) {
-    sscanf(line, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lf",
+    sscanf(line, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lf,%[^,\n]",
            accounts[count].first_name,
            accounts[count].last_name,
            accounts[count].ssn,
@@ -27,10 +25,11 @@ int read_accounts_csv(Account accounts[], int max_accounts) {
            accounts[count].phone,
            accounts[count].email,
            accounts[count].branch_code,
-           accounts[count].account_number,
-           &accounts[count].balance); 
+           &accounts[count].balance,   // Correct position
+           accounts[count].account_number);
     count++;
-    }
+}
+
     fclose(file);
     return count;
 }
@@ -46,10 +45,9 @@ int fetch_report_data(const char *parameters, Report *report) {
     }
 
     if (strcmp(parameters, "total_money") == 0) {
-        double total = 0;
+        double total = 0.0;
         for (int i = 0; i < count; i++) {
-           
-            total += atof(accounts[i].account_number);
+            total += accounts[i].balance;  // FIXED: Correctly sum up the balance
         }
         snprintf(report->data, sizeof(report->data), "Total Money in Bank: %.2f", total);
         return 1;
@@ -59,19 +57,18 @@ int fetch_report_data(const char *parameters, Report *report) {
         return 1;
 
     } else if (strcmp(parameters, "account_details") == 0) {
-    strcpy(report->data, "Detailed Account Information:\n");
-    for (int i = 0; i < count; i++) {
-        char line[256];
-        snprintf(line, sizeof(line),
-                 "Name: %s %s, SSN: %s, Email: %s, Branch: %s\n",
-                 accounts[i].first_name, accounts[i].last_name,
-                 accounts[i].ssn, accounts[i].email,
-                 accounts[i].branch_code);
-        strcat(report->data, line);
+        strcpy(report->data, "Detailed Account Information:\n");
+        for (int i = 0; i < count; i++) {
+            char line[256];
+            snprintf(line, sizeof(line),
+                     "Name: %s %s, SSN: %s, Email: %s, Branch: %s\n",
+                     accounts[i].first_name, accounts[i].last_name,
+                     accounts[i].ssn, accounts[i].email,
+                     accounts[i].branch_code);
+            strcat(report->data, line);
+        }
+        return 1;
     }
-    return 1;
-}
-
 
     strcpy(report->data, "Invalid report type");
     return 0;
