@@ -21,3 +21,5 @@ To manually compile the project using **GCC**, run:
 ```sh
 gcc -o BankProject src/main.c src/create_account.c src/account_number.c -I./include
 ```
+ctest
+```

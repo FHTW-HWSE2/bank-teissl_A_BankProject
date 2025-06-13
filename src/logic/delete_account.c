@@ -6,17 +6,18 @@
 #include <stdlib.h>
 
 #define DELETED_ACCOUNTS_FILE "../assets/deleted_accounts.csv"
+#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
 
 int delete_account(const char *account_number) {
     BankAccount account;
 
     // Step 1: Load account
-    if (get_account_by_account_number(account_number, &account) != 0) {
+    if (get_account_by_account_number(ACCOUNT_CSV_PATH, account_number, &account) != 0) {
         return -1; // Error: account not found
     }
 
     // Step 3: Remove from active accounts
-    if (remove_account(&account) != 0) {
+    if (remove_account(ACCOUNT_CSV_PATH, &account) != 0) {
         return -2; // Error deleting account
     }
 

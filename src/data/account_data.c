@@ -6,8 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define CSV_FILE "../assets/accounts.csv"
-
 bool account_exists(const char *filename, const char *account_number) {
     FILE *file = fopen(filename, "r");
     if (!file) return false;
@@ -62,8 +60,8 @@ int save_account_to_csv(const char *filename, const BankAccount *account) {
     return 0;
 }
 
-int get_account_by_account_number(const char *account_number, BankAccount *account) {
-    FILE *file = fopen(CSV_FILE, "r");
+int get_account_by_account_number(const char *filename, const char *account_number, BankAccount *account) {
+    FILE *file = fopen(filename, "r");
     if (!file) return -1;
 
     BankAccount temp;
@@ -102,8 +100,8 @@ int get_account_by_account_number(const char *account_number, BankAccount *accou
     return -1; // Account not found
 }
 
-int remove_account(const BankAccount *account) {
-    FILE *file = fopen(CSV_FILE, "r");
+int remove_account(const char *filename, const BankAccount *account) {
+    FILE *file = fopen(filename, "r");
     FILE *temp = fopen("temp.csv", "w");
     if (!file || !temp) return -1;
 
@@ -145,8 +143,8 @@ int remove_account(const BankAccount *account) {
     fclose(file);
     fclose(temp);
 
-    remove(CSV_FILE);
-    rename("temp.csv", CSV_FILE);
+    remove(filename);
+    rename("temp.csv", filename);
 
     return found ? 0 : -1;
 }

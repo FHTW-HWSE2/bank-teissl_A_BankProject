@@ -11,7 +11,7 @@
 int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
     BankAccount account;
 
-    if (get_account_by_account_number(account_number, &account) != 0)
+    if (get_account_by_account_number(ACCOUNT_CSV_PATH, account_number, &account) != 0)
         return -1;
 
     if (type == 'w') {
@@ -24,7 +24,7 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
         account.balance += amount;
     }
 
-    if (remove_account(&account) != 0) {
+    if (remove_account(ACCOUNT_CSV_PATH, &account) != 0) {
         return -3;
     }
     
@@ -53,11 +53,11 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
 
     BankAccount sender, receiver;
 
-    if (get_account_by_account_number(from_account, &sender) != 0) {
+    if (get_account_by_account_number(ACCOUNT_CSV_PATH, from_account, &sender) != 0) {
         return -1;
     }
 
-    if (get_account_by_account_number(to_account, &receiver) != 0) {
+    if (get_account_by_account_number(ACCOUNT_CSV_PATH, to_account, &receiver) != 0) {
         return -2;
     }
 
@@ -69,7 +69,7 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     sender.balance -= amount;
     receiver.balance += amount;
 
-    if (remove_account(&sender) != 0) {
+    if (remove_account(ACCOUNT_CSV_PATH, &sender) != 0) {
         return -4;
     }
 
@@ -77,7 +77,7 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
         return -5;
     }
 
-    if (remove_account(&receiver) != 0) {
+    if (remove_account(ACCOUNT_CSV_PATH, &receiver) != 0) {
         return -6;
     }
     
