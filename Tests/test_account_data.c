@@ -51,7 +51,7 @@ void test_get_account_by_number(void) {
     save_account_to_csv(TEST_CSV, &acc);
 
     BankAccount loaded;
-    TEST_ASSERT_EQUAL_INT(0, get_account_by_account_number("11112222", &loaded));
+    TEST_ASSERT_EQUAL_INT(0, get_account_by_account_number(TEST_CSV, "11112222", &loaded));
     TEST_ASSERT_EQUAL_STRING(acc.first_name, loaded.first_name);
     TEST_ASSERT_EQUAL_STRING(acc.account_number, loaded.account_number);
     TEST_ASSERT_EQUAL_UINT64(acc.balance, loaded.balance);
@@ -73,7 +73,7 @@ void test_remove_account(void) {
     save_account_to_csv(TEST_CSV, &acc);
     TEST_ASSERT_TRUE(account_exists(TEST_CSV, "11112222"));
 
-    TEST_ASSERT_EQUAL_INT(0, remove_account(&acc));
+    TEST_ASSERT_EQUAL_INT(0, remove_account(TEST_CSV, &acc));
     TEST_ASSERT_FALSE(account_exists(TEST_CSV, "11112222"));
 }
 

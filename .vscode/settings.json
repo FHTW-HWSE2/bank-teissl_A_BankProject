@@ -16,6 +16,7 @@
         "update_account.h": "c",
         "withdrawal.h": "c",
         "validations.h": "c",
-        "unistd.h": "c"
+        "mockaccount_data.h": "c",
+        "unity.h": "c"
     }
 }

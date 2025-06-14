@@ -10,7 +10,7 @@
 int update_account(const char *account_number) {
     BankAccount account;
 
-    if (get_account_by_account_number(account_number, &account) != 0) {
+    if (get_account_by_account_number(ACCOUNT_CSV_PATH, account_number, &account) != 0) {
         return -1;
     }
 
@@ -21,7 +21,7 @@ int update_account(const char *account_number) {
     get_nonempty_input("Email: ", account.email);
     get_validated_input("New Branch Code (B1/B2): ", account.branch_code, sizeof(account.branch_code), is_valid_branch_code, "Invalid branch code.");
 
-    if (remove_account(&account) != 0) {
+    if (remove_account(ACCOUNT_CSV_PATH, &account) != 0) {
         return -2;
     }
 
