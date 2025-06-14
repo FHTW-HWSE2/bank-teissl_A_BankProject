@@ -44,3 +44,7 @@ cmake --build build
 (cmake --build build --target coverage)
 start build/coverage.html
 ```
+
+cmake -DCOVERAGE=ON ..
+cmake --build . --target coverage
+start coverage.html
