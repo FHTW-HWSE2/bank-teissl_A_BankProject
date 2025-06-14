@@ -7,7 +7,7 @@
 #include <ctype.h>
 #include <time.h>  // For time()
 
-#define ACCOUNT_CSV_PATH "assets/accounts.csv"
+#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
 
 int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
     BankAccount account;
@@ -15,11 +15,6 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
     // Find the account
     if (get_account_by_account_number(account_number, &account) != 0)
         return -1; // Account not found
-
-    // Validate branch code match (optional, can remove if not needed)
-    if (strcmp(account.branch_code, branch_code) != 0) {
-        return -1; // Branch code mismatch
-    }
 
     // Process the transaction
     if (type == 'w') {
@@ -60,7 +55,7 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
     return 0; // Success
 }
 
-int transfer_funds(const char* from_account, const char* to_account, int amount) {
+int transfer_funds(const char* branch_code, const char* from_account, const char* to_account, int amount) {
     BankAccount sender, receiver;
 
     if (get_account_by_account_number(from_account, &sender) != 0) {
@@ -99,7 +94,7 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     // Record transactions
     Transaction sender_txn;
     strcpy(sender_txn.account_number, from_account);
-    strcpy(sender_txn.branch_code, sender.branch_code);
+    strcpy(sender_txn.branch_code, branch_code);
     sender_txn.amount = -amount;
     sender_txn.balance_after = sender.balance;
     sender_txn.timestamp = time(NULL);
@@ -108,7 +103,7 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
 
     Transaction receiver_txn;
     strcpy(receiver_txn.account_number, to_account);
-    strcpy(receiver_txn.branch_code, receiver.branch_code);
+    strcpy(receiver_txn.branch_code, branch_code);
     receiver_txn.amount = amount;
     receiver_txn.balance_after = receiver.balance;
     receiver_txn.timestamp = time(NULL);

@@ -15,6 +15,7 @@
         "bank_logic.h": "c",
         "update_account.h": "c",
         "withdrawal.h": "c",
-        "validations.h": "c"
+        "validations.h": "c",
+        "unistd.h": "c"
     }
 }

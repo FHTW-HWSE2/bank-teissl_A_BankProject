@@ -5,9 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>  // for getcwd
 
-#define CSV_FILE "assets/accounts.csv"
+#define CSV_FILE "../assets/accounts.csv"
 
 bool account_exists(const char *filename, const char *account_number) {
     FILE *file = fopen(filename, "r");
@@ -37,16 +36,6 @@ bool account_exists(const char *filename, const char *account_number) {
 
 // TODO: Return 1 on success
 int save_account_to_csv(const char *filename, const BankAccount *account) {
-    printf("Trying to open file: %s\n", filename);
-
-    // Print the current working directory for debugging
-    char cwd[1024];
-    if (getcwd(cwd, sizeof(cwd)) != NULL) {
-        printf("Current working directory: %s\n", cwd);
-    } else {
-        perror("getcwd() error");
-    }
-
     FILE *file = fopen(filename, "a+");
     if (!file) {
         perror("fopen failed");
@@ -100,6 +89,7 @@ int get_account_by_account_number(const char *account_number, BankAccount *accou
         if (parsed != 9) {
             continue;
         }
+
 
         if (strcmp(temp.account_number, account_number) == 0) {
             *account = temp;

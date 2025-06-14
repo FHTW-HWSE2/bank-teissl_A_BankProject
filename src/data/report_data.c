@@ -4,7 +4,7 @@
 
 // Helper: Read account data
 int read_accounts_csv(Account accounts[], int max_accounts) {
-    FILE *file = fopen("assets/accounts.csv", "r");
+    FILE *file = fopen("../assets/accounts.csv", "r");
     if (!file) {
         printf("Error opening accounts.csv\n");
         return 0;

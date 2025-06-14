@@ -3,18 +3,19 @@
 #include <string.h>
 #include <stdio.h>
 
+#define TEST_CSV "test_accounts_data.csv"
+
 void setUp(void) {
     // Setup a small test accounts CSV file
-    FILE *file = fopen("assets/accounts.csv", "w");
+    FILE *file = fopen(TEST_CSV, "w");
     fputs("FirstName,LastName,SSN,Address,phone,email,BranchCode,Balance,AccountNumber\n", file);
     fputs("John,Doe,1234567890,123 St,555-5555,john@example.com,B1,1000,00000001\n", file);
     fputs("Alice,Smith,9876543210,456 Ave,555-6666,alice@example.com,B2,2000,00000002\n", file);
     fclose(file);
 }
 
-
 void tearDown(void) {
-    remove("assets/accounts.csv");
+    remove(TEST_CSV);
 }
 
 void test_total_money_report(void) {
