@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define TEST_CSV "test_accounts.csv"
+#define TEST_CSV "test_accounts_data.csv"
 
 void setUp(void) {
     FILE *file = fopen(TEST_CSV, "w");
