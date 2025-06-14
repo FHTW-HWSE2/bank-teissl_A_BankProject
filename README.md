@@ -13,14 +13,34 @@ cmake ..
 cmake --build .
 ./BankApp
 ```
-ruby Tests/CMock/lib/cmock.rb src/data/account_data.h
 
+```sh
+ruby Tests/CMock/lib/cmock.rb src/data/account_data.h
 ```
+
 ## Compile with GCC
 To manually compile the project using **GCC**, run:
 ```sh
 gcc -o BankProject src/main.c src/create_account.c src/account_number.c -I./include
 ```
+
+## Start all tests
+```sh
 ctest
 ```
+
+```sh
 powershell -ExecutionPolicy Bypass -File .\run_tests.ps1
+```
+
+## Code coverage
+```sh
+install python
+pip install gcovr
+gcovr -r . --html --html-details -o coverage.html
+
+cmake -DCODE_COVERAGE=ON -B build
+cmake --build build
+(cmake --build build --target coverage)
+start build/coverage.html
+```
