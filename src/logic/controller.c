@@ -2,6 +2,7 @@
 #include "delete_account.h"
 #include "update_account.h"
 #include "src/presentation/user_interface.h"
+#include "src/presentation/report_ui.h"
 #include <stdio.h>
 #include <stdlib.h>
 

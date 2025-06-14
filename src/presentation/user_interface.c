@@ -206,9 +206,11 @@ void transaction_ui(const char type)
 void transfer_ui() {
     char from_account[9];
     char to_account[9];
+    char branch_code[3];
     int amount;
 
     printf("\n--- Internal Transfer ---\n");
+    get_validated_input("Enter Branch code (B1/B2): ", branch_code, sizeof(branch_code), is_valid_branch_code, "Invalid branch code. Use 'B1' or 'B2'.");
     get_validated_input("Enter FROM account number: ", from_account, sizeof(from_account), is_valid_account_number, "Invalid account number. Must be 8 digits.");
     get_validated_input("Enter TO account number: ", to_account, sizeof(to_account), is_valid_account_number, "Invalid account number. Must be 8 digits.");
 
@@ -219,7 +221,7 @@ void transfer_ui() {
         return;
     }
 
-    int result = transfer_funds(from_account, to_account, amount);
+    int result = transfer_funds(branch_code, from_account, to_account, amount);
     switch (result)
     {
     case 0:

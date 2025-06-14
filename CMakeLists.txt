@@ -122,10 +122,3 @@ add_executable(test_simple
 )
 target_include_directories(test_simple PRIVATE ./src ./Tests)
 add_test(NAME SimpleTest COMMAND test_simple)
-
-# =======================
-# Additional recommended settings
-# =======================
-
-# Install target for BankApp (optional, if needed)
-# install(TARGETS BankApp DESTINATION bin)
