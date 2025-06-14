@@ -7,7 +7,7 @@
 
 void setUp(void) {
     FILE *file = fopen(TEST_FILE, "w");
-     fputs("Name,Balance,AccountNumber\nJohn,100,12345678\nAlice,200,87654321\n", file);
+     fputs("FirstName,LastName,SSN,Address,phone,email,BranchCode,Balance,AccountNumber\nBojan,Veljkovic,1234567890,Beogradaska 12,012335583,bojan@example.com,B1,40151,11111111\n", file);
     fclose(file);
 }
 
@@ -16,8 +16,8 @@ void tearDown(void) {
 }
 
 void test_delete_existing_account(void) {
-    int result = delete_account("12345678");
-    TEST_ASSERT_EQUAL_INT(1, result);
+    int result = delete_account(TEST_FILE, "11111111");
+    TEST_ASSERT_EQUAL_INT(0, result);
 
     FILE *file = fopen(TEST_FILE, "r");
     char line[256];
@@ -33,8 +33,8 @@ void test_delete_existing_account(void) {
 }
 
 void test_delete_nonexistent_account(void) {
-    int result = delete_account("00000000");
-    TEST_ASSERT_EQUAL_INT(0, result);
+    int result = delete_account(TEST_FILE, "00000000");
+    TEST_ASSERT_EQUAL_INT(-1, result);
 
     FILE *file = fopen(TEST_FILE, "r");
     char line[256];
@@ -43,11 +43,11 @@ void test_delete_nonexistent_account(void) {
         line_count++;
     }
     fclose(file);
-    TEST_ASSERT_EQUAL_INT(3, line_count);  // header + 2 accounts
+    TEST_ASSERT_EQUAL_INT(2, line_count);  // header + 1 account
 }
 
 void test_delete_with_invalid_file(void) {
-    int result = delete_account("12345678");
+    int result = delete_account(TEST_FILE, "12345678");
     TEST_ASSERT_EQUAL_INT(-1, result);  
 }
 

@@ -8,6 +8,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
+
 // Clear leftover input in buffer
 void clear_input_buffer()
 {
@@ -102,7 +104,7 @@ void delete_account_ui()
     char account_number[9];
     printf("Enter the Account number to delete: ");
     scanf("%8s", account_number);
-    int result = delete_account(account_number);
+    int result = delete_account(ACCOUNT_CSV_PATH, account_number);
 
     switch (result)
     {
