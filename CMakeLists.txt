@@ -82,6 +82,16 @@ add_executable(test_create_account
 target_include_directories(test_create_account PRIVATE ./src ./Tests)
 add_test(NAME CreateAccountTest COMMAND test_create_account)
 
+# TEST: Account Data with Mock
+add_executable(test_account_data_mocked
+        Tests/test_account_data_mocked.c
+        Tests/unity/unity.c
+        mocks/Mockaccount_data.c
+        Tests/CMock/src/cmock.c
+)
+target_include_directories(test_account_data_mocked PRIVATE ./src ./Tests ./mocks)
+add_test(NAME AccountDataTestMocked COMMAND test_account_data_mocked)
+
 # TEST: Simple
 add_executable(test_simple
         Tests/test_simple.c

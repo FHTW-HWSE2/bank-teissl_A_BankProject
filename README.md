@@ -23,3 +23,4 @@ gcc -o BankProject src/main.c src/create_account.c src/account_number.c -I./incl
 ```
 ctest
 ```
+powershell -ExecutionPolicy Bypass -File .\run_tests.ps1
