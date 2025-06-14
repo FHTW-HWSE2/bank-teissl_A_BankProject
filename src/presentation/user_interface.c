@@ -33,26 +33,28 @@ int show_menu()
     printf("                                                                                                 \n");
     printf("                                                                                                 \n");
 
-    printf("\n");
-    printf("                        +========================================+\n");
-    printf("                        ||          BANK MAIN MENU              ||\n");
-    printf("                        +========================================+\n");
-    printf("                        ||  [1]     Create New Bank Account     ||\n");
-    printf("                        ||--------------------------------------||\n");
-    printf("                        ||  [2]     Delete Existing Account     ||\n");
-    printf("                        ||--------------------------------------||\n");
-    printf("                        ||  [3]     Update Account Information  ||\n");
-    printf("                        ||--------------------------------------||\n");
-    printf("                        ||  [4]     Deposit Funds               ||\n");
-    printf("                        ||--------------------------------------||\n");
-    printf("                        ||  [5]     Withdraw Funds              ||\n");
-    printf("                        ||--------------------------------------||\n");
-    printf("                        ||  [6]     Internal Transfer           ||\n");
-    printf("                        ||--------------------------------------||\n");
-    printf("                        ||  [9]     Exit                        ||\n");
-    printf("                        +========================================+\n");
-    printf("\n");
-    printf("                        Enter your choice: ");
+printf("\n");
+printf("                        +========================================+\n");
+printf("                        ||          BANK MAIN MENU              ||\n");
+printf("                        +========================================+\n");
+printf("                        ||  [1]     Create New Bank Account     ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [2]     Delete Existing Account     ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [3]     Update Account Information  ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [4]     Deposit Funds               ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [5]     Withdraw Funds              ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [6]     Internal Transfer           ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [7]     Generate Report             ||\n");
+printf("                        ||--------------------------------------||\n");
+printf("                        ||  [9]     Exit                        ||\n");
+printf("                        +========================================+\n");
+printf("\n");
+printf("                        Enter your choice: ");
 
     if (scanf("%d", &choice) != 1)
     {

@@ -6,8 +6,11 @@
 void setUp(void) {
     FILE *file = fopen(TEST_CSV, "w");
     fputs("FirstName,LastName,SSN,Address,phone,email,BranchCode,Balance,AccountNumber\n", file);
+    fputs("Ana,Jovic,1234567890,Ulica 5,0612345678,ana@mail.com,B1,5000,11112222\n", file);
     fclose(file);
 }
+
+
 
 void tearDown(void) {
     remove(TEST_CSV);

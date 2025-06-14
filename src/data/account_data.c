@@ -32,10 +32,21 @@ bool account_exists(const char *filename, const char *account_number) {
     return false;
 }
 
-// TODo return 1
+// TODO: Return 1 on success
 int save_account_to_csv(const char *filename, const BankAccount *account) {
+    printf("Trying to open file: %s\n", filename);
+
+    // Print the current working directory for debugging
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("Current working directory: %s\n", cwd);
+    } else {
+        perror("getcwd() error");
+    }
+
     FILE *file = fopen(filename, "a+");
     if (!file) {
+        perror("fopen failed");
         print_message("Error opening file.");
         return -1;
     }
@@ -64,10 +75,8 @@ int get_account_by_account_number(const char *filename, const char *account_numb
     FILE *file = fopen(filename, "r");
     if (!file) return -1;
 
-    BankAccount temp;
     char line[1024];
-    while (fgets(line, sizeof(line), file))
-    {
+    while (fgets(line, sizeof(line), file)) {
         BankAccount temp;
         memset(&temp, 0, sizeof(temp));
 
@@ -85,18 +94,17 @@ int get_account_by_account_number(const char *filename, const char *account_numb
                             &temp.balance,
                             temp.account_number);
 
-        if (parsed != 9)
-        {
+        if (parsed != 9) {
             continue;
         }
 
-        if (strcmp(temp.account_number, account_number) == 0)
-        {
+        if (strcmp(temp.account_number, account_number) == 0) {
             *account = temp;
             fclose(file);
             return 0;
         }
     }
+    fclose(file);
     return -1; // Account not found
 }
 
@@ -105,13 +113,13 @@ int remove_account(const char *filename, const BankAccount *account) {
     FILE *temp = fopen("temp.csv", "w");
     if (!file || !temp) return -1;
 
-    BankAccount current;
-    int found = 0;
-
     char header[512];
     if (fgets(header, sizeof(header), file)) {
-        fputs(header, temp); 
+        fputs(header, temp);
     }
+
+    BankAccount current;
+    int found = 0;
 
     while (fscanf(file, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%lu,%[^,\n]\n",
                   current.first_name,

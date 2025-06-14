@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-const char *filename = "../assets/accounts.csv";
+const char *filename = "assets/accounts.csv";
 
 int create_account_logic() {
     BankAccount account = {0};

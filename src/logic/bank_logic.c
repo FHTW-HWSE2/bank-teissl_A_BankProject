@@ -5,8 +5,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <time.h>  // For time()
 
-#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
+#define ACCOUNT_CSV_PATH "assets/accounts.csv"
 
 int do_transaction(const char* account_number, const char* branch_code, int amount, const char type) {
     BankAccount account;
@@ -19,19 +20,21 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
             return -2; // Insufficient funds
         }
         account.balance -= amount;
-    } else if (type == 'd')  // Invalid transaction type
-    {
+    } else if (type == 'd') {
         account.balance += amount;
+    } else {
+        return -3; // Invalid transaction type
     }
 
     if (remove_account(ACCOUNT_CSV_PATH, &account) != 0) {
         return -3;
     }
-    
+
     if (save_account_to_csv(ACCOUNT_CSV_PATH, &account) != 0) {
-        return -4;
+        return -4; // Error saving updated account
     }
 
+    // Record the transaction in transactions.csv
     Transaction txn;
     strcpy(txn.account_number, account_number);
     strcpy(txn.branch_code, branch_code);
@@ -43,14 +46,13 @@ int do_transaction(const char* account_number, const char* branch_code, int amou
         strcpy(txn.type, "deposit");
     else if (type == 'w')
         strcpy(txn.type, "withdraw");
-    
+
     store_transaction(&txn);
 
-    return 0;
+    return 0; // Success
 }
 
 int transfer_funds(const char* from_account, const char* to_account, int amount) {
-
     BankAccount sender, receiver;
 
     if (get_account_by_account_number(ACCOUNT_CSV_PATH, from_account, &sender) != 0) {
@@ -62,10 +64,10 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     }
 
     if (amount > sender.balance) {
-        return -3;
+        return -3; // Insufficient funds
     }
 
-    // Withdraw from sender
+    // Update balances
     sender.balance -= amount;
     receiver.balance += amount;
 
@@ -80,11 +82,12 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     if (remove_account(ACCOUNT_CSV_PATH, &receiver) != 0) {
         return -6;
     }
-    
+
     if (save_account_to_csv(ACCOUNT_CSV_PATH, &receiver) != 0) {
         return -7;
     }
 
+    // Record transactions
     Transaction sender_txn;
     strcpy(sender_txn.account_number, from_account);
     strcpy(sender_txn.branch_code, sender.branch_code);
@@ -103,5 +106,5 @@ int transfer_funds(const char* from_account, const char* to_account, int amount)
     strcpy(receiver_txn.type, "transfer-in");
     store_transaction(&receiver_txn);
 
-    return 0;
+    return 0; // Success
 }
