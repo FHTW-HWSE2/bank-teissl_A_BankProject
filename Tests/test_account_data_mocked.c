@@ -17,21 +17,26 @@ void test_unique_generation_uses_account_exists(void) {
     const char* dummy_file = "test_accounts_data.csv";
     const char* dummy_acc_num = "1234567890";
 
-    // This should trigger your logic, which internally calls account_exists
+    account_exists_ExpectAndReturn(dummy_file, dummy_acc_num, false);
+
     bool exists = account_exists(dummy_file, dummy_acc_num);
 
     TEST_ASSERT_FALSE(exists);
 }
+
 
 void test_get_account_by_number(void) {
     const char* dummy_file = "test_accounts_data.csv";
     const char* dummy_acc_num = "1234567890";
     BankAccount acc;
 
+    get_account_by_account_number_ExpectAndReturn(dummy_file, dummy_acc_num, &acc, 0);
+
     int result = get_account_by_account_number(dummy_file, dummy_acc_num, &acc);
 
     TEST_ASSERT_EQUAL_INT(0, result);
 }
+
 
 void test_save_and_account_exists(void) {
     BankAccount acc = {
