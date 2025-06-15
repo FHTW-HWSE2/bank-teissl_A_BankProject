@@ -19,6 +19,6 @@ typedef struct {
     char data[4096]; // Large enough for detailed reports
 } Report;
 
-int fetch_report_data(const char *parameters, Report *report);
-
+int fetch_report_data(const char *filename, const char *parameters, Report *report);
+int read_accounts_csv(const char *filename, Account accounts[], int max_accounts);
 #endif

@@ -20,7 +20,7 @@ void tearDown(void) {
 
 void test_total_money_report(void) {
     Report report;
-    int result = fetch_report_data("total_money", &report);
+    int result = fetch_report_data(TEST_CSV, "total_money", &report);
 
     printf("Report data: %s\n", report.data);  // Debug output
 
@@ -31,7 +31,7 @@ void test_total_money_report(void) {
 
 void test_active_accounts_report(void) {
     Report report;
-    int result = fetch_report_data("active_accounts", &report);
+    int result = fetch_report_data(TEST_CSV, "active_accounts", &report);
 
     TEST_ASSERT_EQUAL_INT(1, result);
     TEST_ASSERT_TRUE(strstr(report.data, "Number of Active Accounts: 2") != NULL);
@@ -39,7 +39,7 @@ void test_active_accounts_report(void) {
 
 void test_account_details_report(void) {
     Report report;
-    int result = fetch_report_data("account_details", &report);
+    int result = fetch_report_data(TEST_CSV, "account_details", &report);
 
     TEST_ASSERT_EQUAL_INT(1, result);
     TEST_ASSERT_TRUE(strstr(report.data, "Name: John Doe") != NULL);
@@ -48,7 +48,7 @@ void test_account_details_report(void) {
 
 void test_invalid_report_type(void) {
     Report report;
-    int result = fetch_report_data("invalid_type", &report);
+    int result = fetch_report_data(TEST_CSV, "invalid_type", &report);
 
     TEST_ASSERT_EQUAL_INT(0, result);
     TEST_ASSERT_TRUE(strstr(report.data, "Invalid report type") != NULL);
