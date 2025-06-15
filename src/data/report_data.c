@@ -3,8 +3,8 @@
 #include "report_data.h"
 
 // Helper: Read account data
-int read_accounts_csv(Account accounts[], int max_accounts) {
-    FILE *file = fopen("../assets/accounts.csv", "r");
+int read_accounts_csv(const char *filename, Account accounts[], int max_accounts) {
+    FILE *file = fopen(filename, "r");
     if (!file) {
         printf("Error opening accounts.csv\n");
         return 0;
@@ -35,9 +35,9 @@ int read_accounts_csv(Account accounts[], int max_accounts) {
 }
 
 // Fetch report data
-int fetch_report_data(const char *parameters, Report *report) {
+int fetch_report_data(const char *filename, const char *parameters, Report *report) {
     Account accounts[MAX_ACCOUNTS];
-    int count = read_accounts_csv(accounts, MAX_ACCOUNTS);
+    int count = read_accounts_csv(filename, accounts, MAX_ACCOUNTS);
 
     if (count == 0) {
         strcpy(report->data, "No data found");

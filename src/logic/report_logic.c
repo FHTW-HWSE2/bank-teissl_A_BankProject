@@ -2,6 +2,8 @@
 #include "report_logic.h"
 #include "../data/report_data.h"
 
+#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
+
 // Validate input parameters
 int validate_parameters(const char *parameters) {
     if (strcmp(parameters, "total_money") == 0 ||
@@ -23,7 +25,7 @@ int generate_report(const char *parameters, Report *report) {
         return 0;
     }
 
-    if (fetch_report_data(parameters, report)) {
+    if (fetch_report_data(ACCOUNT_CSV_PATH, parameters, report)) {
         return 1;
     } else {
         return 0; // No data found
