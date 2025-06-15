@@ -6,9 +6,9 @@
 ## Build with CMake
 Follow these steps to build and run the project using **CMake**:
 ```sh
-cmake -G "MinGW Makefiles" ..
 mkdir -p build
 cd build
+cmake -G "MinGW Makefiles" ..
 cmake ..
 cmake --build .
 ./BankApp
