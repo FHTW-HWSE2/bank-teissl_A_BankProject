@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "time.h": "c",
+        "bank_account.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c",
+        "create_account.h": "c",
+        "account_number.h": "c",
+        "account_data.h": "c",
+        "ctype.h": "c",
+        "stdbool.h": "c",
+        "user_interface.h": "c",
+        "delete_account.h": "c",
+        "bank_logic.h": "c",
+        "update_account.h": "c",
+        "withdrawal.h": "c",
+        "validations.h": "c",
+        "mockaccount_data.h": "c",
+        "unity.h": "c"
+    }
+}

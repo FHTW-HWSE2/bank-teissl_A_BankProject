@@ -1,0 +1,120 @@
+Start testing: Jun 09 13:47 W. Europe Summer Time
+----------------------------------------------------------
+1/5 Testing: AccountDataTest
+1/5 Test: AccountDataTest
+Command: "C:/bank-teissl_A_BankProject/test_account_data.exe"
+Directory: C:/bank-teissl_A_BankProject
+"AccountDataTest" start time: Jun 09 13:47 W. Europe Summer Time
+Output:
+----------------------------------------------------------
+Trying to open file: test_accounts_data.csv
+Current working directory: C:\bank-teissl_A_BankProject
+C:\bank-teissl_A_BankProject\Tests\test_account_data.c:82:test_save_and_account_exists:PASS
+Trying to open file: test_accounts_data.csv
+Current working directory: C:\bank-teissl_A_BankProject
+C:\bank-teissl_A_BankProject\Tests\test_account_data.c:54:test_get_account_by_number:FAIL: Expected 0 Was -1
+Trying to open file: test_accounts_data.csv
+Current working directory: C:\bank-teissl_A_BankProject
+C:\bank-teissl_A_BankProject\Tests\test_account_data.c:76:test_remove_account:FAIL: Expected 0 Was -1
+
+-----------------------
+3 Tests 2 Failures 0 Ignored 
+FAIL
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Failed.
+"AccountDataTest" end time: Jun 09 13:47 W. Europe Summer Time
+"AccountDataTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: AccountNumberTest
+2/5 Test: AccountNumberTest
+Command: "C:/bank-teissl_A_BankProject/test_account_number.exe"
+Directory: C:/bank-teissl_A_BankProject
+"AccountNumberTest" start time: Jun 09 13:47 W. Europe Summer Time
+Output:
+----------------------------------------------------------
+C:\bank-teissl_A_BankProject\Tests\test_account_number.c:36:test_account_exists_finds_existing_accounts:PASS
+C:\bank-teissl_A_BankProject\Tests\test_account_number.c:37:test_account_exists_rejects_nonexisting_accounts:PASS
+C:\bank-teissl_A_BankProject\Tests\test_account_number.c:38:test_generate_unique_account_number_returns_valid_number:PASS
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"AccountNumberTest" end time: Jun 09 13:47 W. Europe Summer Time
+"AccountNumberTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: ReportLogicTest
+3/5 Test: ReportLogicTest
+Command: "C:/bank-teissl_A_BankProject/test_report_logic.exe"
+Directory: C:/bank-teissl_A_BankProject
+"ReportLogicTest" start time: Jun 09 13:47 W. Europe Summer Time
+Output:
+----------------------------------------------------------
+Report data: Total Money in Bank: 3000.00
+C:\bank-teissl_A_BankProject\Tests\test_report_logic.c:58:test_total_money_report:PASS
+C:\bank-teissl_A_BankProject\Tests\test_report_logic.c:59:test_active_accounts_report:PASS
+C:\bank-teissl_A_BankProject\Tests\test_report_logic.c:60:test_account_details_report:PASS
+C:\bank-teissl_A_BankProject\Tests\test_report_logic.c:61:test_invalid_report_type:PASS
+
+-----------------------
+4 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"ReportLogicTest" end time: Jun 09 13:47 W. Europe Summer Time
+"ReportLogicTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: CreateAccountTest
+4/5 Test: CreateAccountTest
+Command: "C:/bank-teissl_A_BankProject/test_create_account.exe"
+Directory: C:/bank-teissl_A_BankProject
+"CreateAccountTest" start time: Jun 09 13:47 W. Europe Summer Time
+Output:
+----------------------------------------------------------
+Trying to open file: test_accounts_output.csv
+Current working directory: C:\bank-teissl_A_BankProject
+C:\bank-teissl_A_BankProject\Tests\test_create_account.c:50:test_save_account_to_csv_creates_file_and_writes_data:PASS
+
+-----------------------
+1 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"CreateAccountTest" end time: Jun 09 13:47 W. Europe Summer Time
+"CreateAccountTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: SimpleTest
+5/5 Test: SimpleTest
+Command: "C:/bank-teissl_A_BankProject/test_simple.exe"
+Directory: C:/bank-teissl_A_BankProject
+"SimpleTest" start time: Jun 09 13:47 W. Europe Summer Time
+Output:
+----------------------------------------------------------
+C:\bank-teissl_A_BankProject\Tests\test_simple.c:16:test_addition:PASS
+C:\bank-teissl_A_BankProject\Tests\test_simple.c:17:test_false_condition:PASS
+
+-----------------------
+2 Tests 0 Failures 0 Ignored 
+OK
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"SimpleTest" end time: Jun 09 13:47 W. Europe Summer Time
+"SimpleTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 09 13:47 W. Europe Summer Time
