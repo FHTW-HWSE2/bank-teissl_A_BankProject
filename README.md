@@ -37,10 +37,19 @@ powershell -ExecutionPolicy Bypass -File .\run_tests.ps1
 ```sh
 install python
 pip install gcovr
-gcovr -r . --html --html-details -o coverage.html
 
 cmake -DCODE_COVERAGE=ON -B build
 cmake --build build
-(cmake --build build --target coverage)
+cmake --build build --target coverage
+gcovr -r . --filter 'src/' --html --html-details -o coverage/coverage.html
 start build/coverage.html
 ```
+
+In build folder: 
+cmake -DCODE_COVERAGE=ON ..
+cmake --build .
+cmake --build . --target coverage
+In coverage folder:
+gcovr -r . --filter 'src/' --html --html-details -o coverage/coverage.html
+in root:
+start coverage/coverage.html

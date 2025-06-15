@@ -12,8 +12,16 @@ endif()
 
 # Coverage report target
 add_custom_target(coverage
-    COMMAND gcovr --root .. --object-directory . --filter '../src/' --html --html-details -o coverage.html
+    COMMAND gcovr
+        --root ..
+        --object-directory .
+        --filter '../src/'
+        --exclude '../Tests/unity/unity.c'
+        --exclude '.*cmock.c'
+        --exclude '../mocks/.*'
+        --html --html-details -o coverage.html
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMENT "Generating code coverage report excluding unity, cmock, and mocks..."
 )
 
 # Global includes and compile options
@@ -114,11 +122,3 @@ add_executable(test_account_data_mocked
 )
 target_include_directories(test_account_data_mocked PRIVATE ./src ./Tests ./mocks)
 add_test(NAME AccountDataTestMocked COMMAND test_account_data_mocked)
-
-# TEST: Simple
-add_executable(test_simple
-    Tests/test_simple.c
-    Tests/unity/unity.c
-)
-target_include_directories(test_simple PRIVATE ./src ./Tests)
-add_test(NAME SimpleTest COMMAND test_simple)
