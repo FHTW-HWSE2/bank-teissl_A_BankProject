@@ -105,6 +105,22 @@ add_executable(test_create_account
 target_include_directories(test_create_account PRIVATE ./src ./Tests)
 add_test(NAME CreateAccountTest COMMAND test_create_account)
 
+# TEST: Update Account
+add_executable(test_update_account
+    Tests/test_update_account.c
+    Tests/unity/unity.c
+    src/data/account_data.c
+    src/logic/create_account.c
+    src/logic/validations.c
+    src/presentation/user_interface.c
+    src/logic/delete_account.c
+    src/logic/update_account.c
+    src/logic/bank_logic.c
+    src/data/transactions_db.c
+)
+target_include_directories(test_update_account PRIVATE ./src ./Tests)
+add_test(NAME UpdateAccountTest COMMAND test_update_account)
+
 # TEST: Account Data with Mock
 add_executable(test_account_data_mocked
         Tests/test_account_data_mocked.c

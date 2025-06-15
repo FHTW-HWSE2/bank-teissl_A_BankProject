@@ -3,23 +3,23 @@
 #include <stdio.h>
 #include <string.h>
 
-#define TEST_FILE "test_accounts_delete.csv"
+#define file_name "test_accounts_delete.csv"
 
 void setUp(void) {
-    FILE *file = fopen(TEST_FILE, "w");
+    FILE *file = fopen(file_name, "w");
      fputs("Name,Balance,AccountNumber\nJohn,100,12345678\nAlice,200,87654321\n", file);
     fclose(file);
 }
 
 void tearDown(void) {
-    remove(TEST_FILE);
+    remove(file_name);
 }
 
 void test_delete_existing_account(void) {
     int result = delete_account("12345678");
     TEST_ASSERT_EQUAL_INT(1, result);
 
-    FILE *file = fopen(TEST_FILE, "r");
+    FILE *file = fopen(file_name, "r");
     char line[256];
     int found = 0;
     while (fgets(line, sizeof(line), file)) {
@@ -36,7 +36,7 @@ void test_delete_nonexistent_account(void) {
     int result = delete_account("00000000");
     TEST_ASSERT_EQUAL_INT(0, result);
 
-    FILE *file = fopen(TEST_FILE, "r");
+    FILE *file = fopen(file_name, "r");
     char line[256];
     int line_count = 0;
     while (fgets(line, sizeof(line), file)) {

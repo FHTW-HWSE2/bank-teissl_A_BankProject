@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#define ACCOUNT_CSV_PATH "../assets/accounts.csv"
 
 // Clear leftover input in buffer
 void clear_input_buffer()
@@ -131,7 +132,7 @@ void update_account_ui()
     scanf("%8s", account_number);
     clear_input_buffer();
 
-    int result = update_account(account_number);
+    int result = update_account(ACCOUNT_CSV_PATH, account_number);
 
     switch (result)
     {
