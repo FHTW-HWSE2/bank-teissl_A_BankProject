@@ -57,3 +57,10 @@ To do's:
 - internal transfer and withdrawal implemented (needs to be refined)
 - Design changes
 - cmock (not finished)
+------------------------
+# Report
+## The project required approximately 80 hours of work 
+## Members:
+- Muhammad Malaz Yasin
+- Bojan Veljkovic
+- Jangin Rasheed
