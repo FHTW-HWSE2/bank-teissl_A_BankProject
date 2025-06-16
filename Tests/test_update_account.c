@@ -43,7 +43,7 @@ void test_update_existing_account(void) {
         .address = "New Address",
         .phone = "000-0000",
         .email = "john@updated.com",
-        .branch_code = "003",
+        .branch_code = "B1",
         .balance = "6000",
         .account_number = "11112222"
     };
@@ -75,7 +75,7 @@ void test_update_nonexistent_account(void) {
         .address = "Nowhere",
         .phone = "000-0000",
         .email = "ghost@none.com",
-        .branch_code = "999",
+        .branch_code = "B2",
         .balance = "0",  // No balance change
         .account_number = "99999999"
     };
